@@ -17,7 +17,7 @@
 
 ### 主要更新：
 
-#### - **mi-cloud-config-server** 作为配置中心服务端
+####  **mi-cloud-config-server** 作为配置中心服务端
 
   - 拉取配置时更新 git 仓库副本，保证是最新结果
   - 支持数据结构丰富，yml, json, properties 等
@@ -25,11 +25,11 @@
   - 配置存储基于 git 仓库，可进行版本管理
   - 简单可靠，有丰富的配套方案
   
-#### - **mi-cloud-config-client** 默认客户端实现
+####  **mi-cloud-config-client** 默认客户端实现
   - 支持IP地址调用
   - 支持注册服务中心配置
 
-#### - **mi-cloud-config-repo** 配置文件存储
+####  **mi-cloud-config-repo** 配置文件存储
   - 文件格式{application}-{profile}.properties对应的配置文件，{label}对应git上不同的分支，默认为master
     
 - 更新 `README.md` 等相关文档和示例；
