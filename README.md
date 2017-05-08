@@ -35,9 +35,10 @@ Select2 | 选择框插件  | [https://github.com/select2/select2](https://github
 ----|------|----
 Maven | 项目构建管理  | [http://maven.apache.org/](http://maven.apache.org/)
 Redis | 分布式缓存数据库  | [https://redis.io/](https://redis.io/)
+Spring Boot | 微框架  | [https://projects.spring.io/spring-boot/](https://projects.spring.io/spring-boot/)
 Spring Cloud | 微服务构架（中文）  | [https://springcloud.cc/](https://springcloud.cc/)
 Eureka | 云端服务发现  | [https://springcloud.cc/spring-cloud-netflix-zhcn.html/](https://springcloud.cc/spring-cloud-netflix-zhcn.html/)
-Spring Cloud | 微服务构架（中文）  | [https://springcloud.cc/](https://springcloud.cc/)
+Swagger2 | API文档框架  | [http://swagger.io/](http://swagger.io/)
 
 ## 解决问题
                 
