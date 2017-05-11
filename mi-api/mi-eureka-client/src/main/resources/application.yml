@@ -3,6 +3,12 @@ server:
 spring:
   application:
     name: mi-eureka-client
+  aop:
+    auto: true #开启AOP功能
+  boot:
+     admin:
+      url: http://localhost:1005  #应用服务监控
+
 eureka:
   client:
     serviceUrl:

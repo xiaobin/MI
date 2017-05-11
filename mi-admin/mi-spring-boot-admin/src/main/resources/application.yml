@@ -10,3 +10,13 @@ spring:
 endpoints:
   health:
     sensitive: false
+
+# 引用监控限制内容Map <Key String>
+
+info:
+      artifact : mi-spring-boot-admin
+      name: Spring Boot Admin
+      description: 引用监控中心
+      version : V1.0
+
+

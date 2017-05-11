@@ -7,8 +7,7 @@
 	<artifactId>mi-admin</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
-
 	<name>mi-admin</name>
-	<description>管理员模块</description>
+	<description>Admin Modules</description>
 
 </project>
