@@ -38,7 +38,9 @@ Redis | 分布式缓存数据库  | [https://redis.io/](https://redis.io/)
 Spring Boot | 微框架  | [https://projects.spring.io/spring-boot/](https://projects.spring.io/spring-boot/)
 Spring Cloud | 微服务构架（中文）  | [https://springcloud.cc/](https://springcloud.cc/)
 Eureka | 云端服务发现  | [https://springcloud.cc/spring-cloud-netflix-zhcn.html/](https://springcloud.cc/spring-cloud-netflix-zhcn.html/)
-Swagger2 | API文档框架  | [http://swagger.io/](http://swagger.io/)
+Swagger2 | API文档框架  | [http://swagger.io/](http://swagger.io/
+Spring Boot Admin | 应用监控中心V1.5.0  | [http://codecentric.github.io/spring-boot-admin/1.5.0/](http://codecentric.github.io/spring-boot-admin/1.5.0/)
+
 
 ## 解决问题
                 

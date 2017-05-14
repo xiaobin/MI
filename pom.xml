@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mi</groupId>
+    <groupId>mi</groupId>
     <artifactId>MI</artifactId>
     <version>1.0</version>
 
@@ -29,20 +29,29 @@
     </modules>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- AOP -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-            <version>1.4.6.RELEASE</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-aop</artifactId>
+        <version>1.4.6.RELEASE</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.netflix.archaius/archaius-core -->
+        <dependency>
+        <groupId>com.netflix.archaius</groupId>
+        <artifactId>archaius-core</artifactId>
+        <version>0.7.4</version>
+        </dependency>
+
+        <dependency>
+        <groupId>com.netflix.servo</groupId>
+        <artifactId>servo-core</artifactId>
+        <version>0.11.5</version>
+        </dependency>
 
     </dependencies>
 
