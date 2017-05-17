@@ -27,20 +27,20 @@ public class ServiceMoitor {
     @Autowired
     private CounterService counterService;
 
-    @Before(value = "execution(* com.mi.controller.*.*(..))")
-    public void countServiceInvoke(JoinPoint joinPoint) {
-//        counterService.increment(joinPoint.getSignature().toString());
-//        System.err.println("监控咯"+joinPoint.getSignature());
-    }
-
-    @Around(value = "execution(* com.mi.controller.*.*(..))")
-    public void latencyService(ProceedingJoinPoint pjp) throws Throwable {
-//        long start = System.currentTimeMillis();
-////        pjp.proceed();
-////        Thread.sleep(2000);
-//        long end = System.currentTimeMillis();
-//        System.err.println("延迟多久："+(end-start));
-//        gaugeService.submit(pjp.getSignature().toString(), end - start);
-    }
+//    @Before(value = "execution(* com.mi.controller.*.*(..))")
+//    public void countServiceInvoke(JoinPoint joinPoint) {
+////        counterService.increment(joinPoint.getSignature().toString());
+////        System.err.println("监控咯"+joinPoint.getSignature());
+//    }
+//
+//    @Around(value = "execution(* com.mi.controller.*.*(..))")
+//    public void latencyService(ProceedingJoinPoint pjp) throws Throwable {
+////        long start = System.currentTimeMillis();
+//////        pjp.proceed();
+//////        Thread.sleep(2000);
+////        long end = System.currentTimeMillis();
+////        System.err.println("延迟多久："+(end-start));
+////        gaugeService.submit(pjp.getSignature().toString(), end - start);
+//    }
 
 }

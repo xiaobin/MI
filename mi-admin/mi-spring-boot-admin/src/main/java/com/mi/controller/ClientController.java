@@ -23,11 +23,11 @@ public class ClientController {
 
     private final Logger log = Logger.getLogger(ClientController.class);
 
-    @RequestMapping(value = "/login")
-    public String loginSpringBootAdmin(@RequestParam String name){
-        System.err.println("-----------------------------");
-        return "Hello !!   "+name + " ,I here in port  ";
-    }
+//    @RequestMapping(value = "/login")
+//    public String loginSpringBootAdmin(@RequestParam String name){
+//        System.err.println("-----------------------------");
+//        return "Hello !!   "+name + " ,I here in port  ";
+//    }
 
     @RequestMapping("/hii")
     public String hello1(@RequestParam String name){

@@ -24,7 +24,10 @@ endpoints:
   health:
     sensitive: false
   cors:
-    allowed-methods: GET,POST
+    allowed-methods: HEAD,GET,POST
+
+
+
 
 # 引用监控限制内容Map <Key String>
 info:
@@ -33,8 +36,8 @@ info:
   description: 引用监控中心
   version : V1.0
 
-logging:
-  file: "traget/mi-spring-boot-admin.log"
+#logging:
+#  file: "traget/mi-spring-boot-admin.log"
 
 management:
   security:
