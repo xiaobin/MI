@@ -3,7 +3,12 @@
 [![GitHub stars](https://img.shields.io/github/stars/MIYAOW/MI.svg?style=social&label=Stars)](https://github.com/MIYAOW/MI)
 [![GitHub forks](https://img.shields.io/github/forks/MIYAOW/MI.svg?style=social&label=Fork)](https://github.com/MIYAOW/MI)
 
+## 项目建议
+
+   希望大家一起共同研究。更多的解决方法。
+
 ## 项目规划
+
    `MI`微型系统项目于2017年4月1日按照企业习惯归纳总结出自己一套企业级架构，并仅仅只是架构，它是一种理念，正在成长中.....
 
 ## 项目介绍
