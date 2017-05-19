@@ -11,10 +11,10 @@
 ### 主要更新：
 
 ####  长期收集工具类 说明
-   - Util - > Package - > descri
+   - Util - > Package - > Describ
 
 
-####  增加**Swagger2** 作为 API - doc 文档
+####  **Swagger2** 作为 API - doc 文档
 
   - 解决开发沟通成本问题
   - 支持API自动生成同步的在线文档
