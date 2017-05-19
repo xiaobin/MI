@@ -29,7 +29,7 @@
 
         <module>mi-api/mi-eureka-server</module>
         <module>mi-api/mi-eureka-client</module>
-        <module>mi-api/mi-eureka-consumer</module>
+        <module>mi-api/mi-eureka-discovery</module>
 
     </modules>
 

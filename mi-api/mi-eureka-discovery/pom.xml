@@ -7,35 +7,30 @@
 	<artifactId>mi-eureka-consumer</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
-
 	<name>mi-eureka-consumer</name>
 	<description></description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.6.RELEASE</version>
+		<groupId>mi</groupId>
+		<artifactId>MI</artifactId>
+		<version>1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<spring-cloud.version>Dalston.RELEASE</spring-cloud.version>
-	</properties>
-
 	<dependencies>
-		<!-- 断路由引入-->
+		<!-- spring-cloud-starter-hystrix-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-hystrix</artifactId>
 		</dependency>
 
+		<!-- spring-cloud-starter-feign-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
+
+		<!-- spring-cloud-starter-ribbon-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-ribbon</artifactId>
@@ -45,15 +40,26 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
+
+		<!-- gague和counter 监控-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.jolokia/jolokia-core -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>org.jolokia</groupId>
+			<artifactId>jolokia-core</artifactId>
+			<version>1.3.5</version>
+		</dependency>
+
+
+		<!-- spring-boot-admin-starter-clien -->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>1.5.0</version>
 		</dependency>
 
 		<!-- 包缺少问题 -->
@@ -62,6 +68,7 @@
 			<artifactId>selenium-server-standalone</artifactId>
 			<version>2.41.0</version>
 		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
