@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@RestController
 public class MiEurekaClientApiApplication {
 
 	public static void main(String[] args) {

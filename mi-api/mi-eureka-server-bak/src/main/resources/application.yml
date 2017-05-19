@@ -12,7 +12,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://mione:1000/eureka/
+      defaultZone: http://mione:1000
   server:
     enable-self-preservation: true
     renewalPercentThreshold: 0 #设置更新率阈值
