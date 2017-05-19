@@ -2,7 +2,7 @@ server:
   port: 1005
 spring:
   application:
-    name: Spring Boot Admin Web
+    name: MI-SB-ADMIN-WEB
   boot:
     admin:
       url: http://127.0.0.1:${server.port}
@@ -26,14 +26,11 @@ endpoints:
   cors:
     allowed-methods: HEAD,GET,POST
 
-
-
-
 # 引用监控限制内容Map <Key String>
 info:
   artifact : mi-spring-boot-admin
-  name: Spring Boot Admin
-  description: 引用监控中心
+  name: ${spring.application.name}
+  description: 应用监控中心
   version : V1.0
 
 #logging:
