@@ -25,6 +25,7 @@
     <modules>
         <module>mi-common</module>
 
+        <module>mi-admin/mi-platform-center</module>
         <module>mi-admin/mi-spring-boot-admin</module>
 
         <module>mi-api/mi-eureka-server</module>

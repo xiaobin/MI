@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>mi.common</groupId>
-	<artifactId>mi-common</artifactId>
+	<groupId>com.mi</groupId>
+	<artifactId>mi-platform-center</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>mi-common</name>
-	<description>公共组件模块</description>
+	<name>mi-platform-center</name>
+	<description>MI 总平台</description>
 
 	<parent>
 		<groupId>mi</groupId>
@@ -17,23 +17,21 @@
 		<version>1.0</version>
 	</parent>
 
+
 	<dependencies>
+		<!-- 引入公共组件模块 -->
+		<dependency>
+			<groupId>mi.common</groupId>
+			<artifactId>mi-common</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- spring-boot-starter-web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.9</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.15</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -44,6 +42,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
