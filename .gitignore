@@ -3,3 +3,17 @@
 #目录结构太长隐藏
 test
 #暂时隐藏
+mi-admin/mi-spring-boot-admin/target/
+mi-api/mi-eureka-client-api/target/
+mi-api/mi-eureka-client/target/
+mi-api/mi-eureka-discovery/target/
+mi-api/mi-eureka-server-bak/target/
+mi-api/mi-eureka-server/target/classes/logback.xml
+mi-api/mi-eureka-server/target/generated-sources/
+mi-common/src/main/resources/static/
+mi-common/src/main/resources/templates/
+mi-common/target/
+mi-config/mi-cloud-config-client/target/generated-sources/
+mi-config/mi-cloud-config-client/target/generated-test-sources/
+mi-config/mi-cloud-config-server/target/generated-sources/
+mi-config/mi-cloud-config-server/target/generated-test-sources/
