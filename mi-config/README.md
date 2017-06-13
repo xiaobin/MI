@@ -32,4 +32,5 @@
 ####  **mi-cloud-config-repo** 配置文件存储
   - 文件格式{application}-{profile}.properties对应的配置文件，{label}对应git上不同的分支，默认为master
     
+    
 - 更新 `README.md` 等相关文档和示例；
