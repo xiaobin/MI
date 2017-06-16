@@ -17,11 +17,11 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private SysUserMapper sysUserMapper;
+//    @Autowired
+//    private SysUserMapper sysUserMapper;
 
     @Override
     public List<Map> getSysUser() {
-        return sysUserMapper.getSysUser();
+        return null;
     }
 }

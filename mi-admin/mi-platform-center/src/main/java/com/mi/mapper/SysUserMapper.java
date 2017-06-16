@@ -12,9 +12,8 @@ import java.util.Map;
  *         (M.M)!
  *         Created by 2017/6/16.
  */
-@Repository("sysUserMapper")
 public interface SysUserMapper {
 
-    @Select("select * from sys_user s where 1=1")
+//    @Select("select * from sys_user s where 1=1")
     List<Map> getSysUser();
 }
