@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebInitParam;
 import com.alibaba.druid.support.http.WebStatFilter;
 
 /**
- *
+ * 数据库监控过滤器
  * @author yesh
  *         (M.M)!
  *         Created by 2017/6/16.

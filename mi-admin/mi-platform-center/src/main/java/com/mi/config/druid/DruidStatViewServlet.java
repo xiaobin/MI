@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import com.alibaba.druid.support.http.StatViewServlet;
 
 /**
- *
+ * 数据监控视图配置
  * @author yesh
  *         (M.M)!
  *         Created by 2017/6/16.
