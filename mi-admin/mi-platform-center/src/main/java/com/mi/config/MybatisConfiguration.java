@@ -3,6 +3,7 @@ package com.mi.config;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -25,6 +26,7 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @ConditionalOnClass({EnableTransactionManagement.class})
+@MapperScan(basePackages={"com.mi.mapper"})
 @Import({ DataBaseConfiguration.class})
 public class MybatisConfiguration {
 
