@@ -1,10 +1,8 @@
-package com.mi.common.aspect;
+package com.mi.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,20 +11,20 @@ import org.springframework.stereotype.Component;
  *         (M.M)!
  *         Created by 2017/6/16.
  */
+@Slf4j
 @Aspect
 @Component
-@Slf4j
 public class DataSourceAop {
 
     @Before("execution(* com.mi.mapper..*.select*(..)) || execution(* com.mi.mapper..*.get*(..)) || execution(* com.mi.mapper..*.find*(..))")
     public void setReadDataSourceType() {
-//        DataSourceContextHolder.read();
+        DataSourceContextHolder.read();
         log.info("dataSource切换到：Read");
     }
 
     @Before("execution(* com.mi.mapper..*.insert*(..)) || execution(* com.mi.mapper..*.update*(..))")
     public void setWriteDataSourceType() {
-//        DataSourceContextHolder.write();
+        DataSourceContextHolder.write();
         log.info("dataSource切换到：write");
     }
 }

@@ -1,6 +1,4 @@
-package com.mi.common;
-
-
+package com.mi.config;
 import lombok.Getter;
 
 /**

@@ -1,11 +1,8 @@
 package com.mi.config;
 
-import com.mi.common.DataSourceType;
-import com.mi.common.MyAbstractRoutingDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -28,7 +25,6 @@ import java.util.Map;
 @Configuration
 @ConditionalOnClass({EnableTransactionManagement.class})
 @Import({ DataBaseConfiguration.class})
-@MapperScan(basePackages={"com.mi.mapper"})
 public class MybatisConfiguration {
 
     @Value("${spring.datasource.type}")
