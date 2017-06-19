@@ -18,7 +18,6 @@ public class LoginController {
 
     @RequestMapping(value = "/login")
     public void Login(){
-
         System.err.println("111");
     }
 

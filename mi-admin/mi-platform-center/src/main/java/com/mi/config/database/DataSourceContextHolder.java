@@ -1,9 +1,9 @@
-package com.mi.config;
+package com.mi.config.database;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 本地线程全局变量
+ * 本地线程全局变量(控制读写分离)
  * @author yesh
  *         (M.M)!
  *         Created by 2017/6/16.
@@ -12,17 +12,20 @@ import lombok.extern.slf4j.Slf4j;
 public class DataSourceContextHolder {
 
     private static final ThreadLocal<String> local = new ThreadLocal<String>();
+
     public static ThreadLocal<String> getLocal() {
         return local;
     }
+
     /**
-     * 读可能是多个库
+     * Read Maybe More Database
      */
     public static void read() {
         local.set(DataSourceType.read.getType());
     }
+
     /**
-     * 写只有一个库
+     * Write Only One DataBase
      */
     public static void write() {
         local.set(DataSourceType.write.getType());

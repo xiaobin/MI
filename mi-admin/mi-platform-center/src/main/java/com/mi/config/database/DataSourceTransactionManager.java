@@ -1,4 +1,4 @@
-package com.mi.config;
+package com.mi.config.database;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +28,7 @@ public class DataSourceTransactionManager {
 
     @Bean(name = "transactionManager")
     public org.springframework.jdbc.datasource.DataSourceTransactionManager transactionManagers() {
-        log.info("-------------------- transactionManager init ---------------------");
+        log.info("-------------------- masterDataSource transactionManager init ---------------------");
         return new org.springframework.jdbc.datasource.DataSourceTransactionManager(dataSource);
     }
 }

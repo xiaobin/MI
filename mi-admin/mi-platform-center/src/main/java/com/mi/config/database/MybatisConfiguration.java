@@ -1,4 +1,4 @@
-package com.mi.config;
+package com.mi.config.database;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -38,6 +38,7 @@ public class MybatisConfiguration {
 
     @Resource(name = "masterDataSource")
     private DataSource dataSource;
+
     @Resource(name = "readDataSources")
     private List<DataSource> readDataSources;
 
@@ -58,17 +59,23 @@ public class MybatisConfiguration {
      */
     @Bean
     public AbstractRoutingDataSource roundRobinDataSouceProxy() {
+
         int size = Integer.parseInt(dataSourceSize);
+
         MyAbstractRoutingDataSource proxy = new MyAbstractRoutingDataSource(size);
+
         Map<Object, Object> targetDataSources = new HashMap<Object, Object>();
+
         // DataSource writeDataSource = SpringContextHolder.getBean("writeDataSource");
-        // 写
+        //设置写库
         targetDataSources.put(DataSourceType.write.getType(),dataSource);
+
         // targetDataSources.put(DataSourceType.read.getType(),readDataSource);
-        //多个读数据库时
+        //设置多读库
         for (int i = 0; i < size; i++) {
             targetDataSources.put(i, readDataSources.get(i));
         }
+
         proxy.setDefaultTargetDataSource(dataSource);
         proxy.setTargetDataSources(targetDataSources);
         return proxy;

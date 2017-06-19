@@ -1,4 +1,4 @@
-package com.mi.config;
+package com.mi.config.database;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 数据库配置
+ * 数据源配置
  * @author yesh
  *         (M.M)!
  *         Created by 2017/6/16.
@@ -25,30 +25,35 @@ public class DataBaseConfiguration {
     @Value("${spring.datasource.type}")
     private Class<? extends DataSource> dataSourceType;
 
+    /**
+     * 主库配置（负责写）
+     * @return
+     */
     @Bean(name="masterDataSource", destroyMethod = "close", initMethod="init")
     @Primary
     @ConfigurationProperties(prefix = "spring.datasource",locations = "classpath:application.properties")
     public DataSource writeDataSource() {
-        log.info("-------------------- masterDataSource init ---------------------");
+        log.info("-------------------- Master DataSource init ---------------------");
         return DataSourceBuilder.create().type(dataSourceType).build();
     }
     /**
-     * 有多少个从库就要配置多少个
+     * 从库配置（负责读）
      * @return
      */
     @Bean(name = "slaveDataSource")
     @ConfigurationProperties(prefix = "spring.slave",locations = "classpath:application.properties")
     public DataSource readDataSourceOne(){
-        log.info("-------------------- slaveDataSourceOne init ---------------------");
+        log.info("-------------------- Slave DataSource One init ---------------------");
         return DataSourceBuilder.create().type(dataSourceType).build();
     }
 
-    @Bean(name = "slaveDataSource")
+    @Bean(name = "slaveDataSource1")
     @ConfigurationProperties(prefix = "spring.slave1",locations = "classpath:application.properties")
     public DataSource readDataSourceTwo() {
-        log.info("-------------------- slaveDataSourceTwo init ---------------------");
+        log.info("-------------------- Slave DataSource Two init ---------------------");
         return DataSourceBuilder.create().type(dataSourceType).build();
     }
+
     @Bean("readDataSources")
     public List<DataSource> readDataSources(){
         List<DataSource> dataSources=new ArrayList<>();
@@ -56,5 +61,4 @@ public class DataBaseConfiguration {
         dataSources.add(readDataSourceTwo());
         return dataSources;
     }
-
 }

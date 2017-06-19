@@ -1,4 +1,4 @@
-package com.mi.config;
+package com.mi.config.database;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
@@ -11,8 +11,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  *         Created by 2017/6/16.
  */
 public class MyAbstractRoutingDataSource extends AbstractRoutingDataSource {
+
     private final int dataSourceNumber;
+
     private AtomicInteger count = new AtomicInteger(0);
+
     public MyAbstractRoutingDataSource(int dataSourceNumber) {
         this.dataSourceNumber = dataSourceNumber;
     }
