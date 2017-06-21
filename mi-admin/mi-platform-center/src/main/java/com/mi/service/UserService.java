@@ -9,5 +9,7 @@ import java.util.Map;
  *         Created by 2017/6/16.
  */
 public interface UserService {
+
     List<Map> getSysUser();
+
 }

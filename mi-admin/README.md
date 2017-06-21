@@ -8,6 +8,7 @@
    
     - 数据库读写分离配置
     - Druid 数据监控
+    - Mybatis 升级为 MybatisPlus
 
 
 
