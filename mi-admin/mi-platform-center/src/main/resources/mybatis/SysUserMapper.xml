@@ -3,6 +3,6 @@
 <mapper namespace="com.mi.mapper.SysUserMapper">
 
     <select id="getSysUser" parameterType="String" resultType="java.util.Map">
-        select * from sys_user
+        select * from mi_sys_user
     </select>
 </mapper>
