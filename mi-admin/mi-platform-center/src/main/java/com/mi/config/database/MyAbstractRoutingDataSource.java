@@ -23,9 +23,17 @@ public class MyAbstractRoutingDataSource extends AbstractRoutingDataSource {
     @Override
     protected Object determineCurrentLookupKey() {
         String typeKey = DataSourceContextHolder.getJdbcType();
-        if (typeKey.equals(DataSourceType.write.getType()))
+        //配置MyBatis后
+        //determineTargetDataSource中默认跑了determineCurrentLookupKey方法
+        //若为空设置为主库（写）
+        if (typeKey == null){
             return DataSourceType.write.getType();
-        // 读 简单负载均衡
+        }
+        else if (typeKey.equals(DataSourceType.write.getType())){
+            return DataSourceType.write.getType();
+        }
+
+        // 不为则为分库（读） 简单负载均衡
         int number = count.getAndAdd(1);
         int lookupKey = number % dataSourceNumber;
         return new Integer(lookupKey);
