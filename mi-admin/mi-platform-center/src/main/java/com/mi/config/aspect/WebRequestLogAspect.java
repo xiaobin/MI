@@ -1,4 +1,4 @@
-package com.mi.common.aspect;
+package com.mi.config.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -46,6 +46,6 @@ public class WebRequestLogAspect {
     public void doAfterReturning(Object ret) throws Throwable {
         // 处理完请求，返回内容
         log.info("RESPONSE : " + ret);
-        log.info("SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
+        log.info("SPEND_TIME : " + (System.currentTimeMillis() - startTime.get()));
     }
 }

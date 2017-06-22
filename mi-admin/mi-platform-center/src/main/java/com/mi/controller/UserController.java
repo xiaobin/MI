@@ -1,5 +1,6 @@
 package com.mi.controller;
 
+import com.mi.config.redis.RedisUtil;
 import com.mi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,9 @@ public class UserController {
 
     @RequestMapping(value = "/getUser")
     public String getUser(){
+        RedisUtil.set("name","Miyaow");
+
+        System.err.println(RedisUtil.get("name"));
 
         List<Map> map = userServices.getSysUser();
         System.err.println(map);

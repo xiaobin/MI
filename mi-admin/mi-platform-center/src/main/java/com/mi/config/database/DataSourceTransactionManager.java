@@ -28,7 +28,7 @@ public class DataSourceTransactionManager {
 
     @Bean(name = "transactionManager")
     public org.springframework.jdbc.datasource.DataSourceTransactionManager transactionManagers() {
-        log.info("-------------------- masterDataSource transactionManager init ---------------------");
+        log.info("-------------------- Master DataSource TransactionManager init ---------------------");
         return new org.springframework.jdbc.datasource.DataSourceTransactionManager(dataSource);
     }
 }
