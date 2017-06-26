@@ -4,6 +4,7 @@
 
     <select id="getSysUser" parameterType="String" resultType="java.util.Map">
         select * from mi_sys_user where 1=1
+        
     </select>
 
 </mapper>

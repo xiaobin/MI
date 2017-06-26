@@ -21,9 +21,9 @@ public class SysLogController {
 
     @RequestMapping(value = "/login")
     public String selectList(){
-
        SysLog sysLog =  sysLogService.selectById("1");
-       return  null;
+       return  "1231111";
+
 
     }
 
