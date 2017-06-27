@@ -5,12 +5,12 @@ import ${pkg};
 #end
 
 /**
- * <p>
- * $!{table.comment}
- * </p>
+ *
+ * $!{table.comment} 实体
  *
  * @author ${author}
- * @since ${date}
+ *         (M.M)!
+ *         Created by ${date}.
  */
 #if(${table.convert})
 @TableName("${table.name}")

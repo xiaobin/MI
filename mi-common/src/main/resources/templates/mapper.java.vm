@@ -4,12 +4,12 @@ import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
 
 /**
- * <p>
-  * $!{table.comment} Mapper 接口
- * </p>
+ *
+ * $!{table.comment} Mapper 接口
  *
  * @author ${author}
- * @since ${date}
+ *         (M.M)!
+ *         Created by ${date}.
  */
 public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
 

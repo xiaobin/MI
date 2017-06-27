@@ -8,7 +8,7 @@ package com.mi.common.util;
  */
 public class StaticContantUtil {
 
-    public final static String author = "yesh";
+    public final static String AUTHOR = "yesh";
 
 
 

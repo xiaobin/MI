@@ -2,13 +2,10 @@ package com.mi;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import org.junit.Before;
+import com.mi.common.util.StaticContantUtil;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -23,64 +20,59 @@ import java.util.Map;
  */
 public class MybatisPlusGenerator {
 
-    
-    private final String driverName = "";
-    private final String username = "";
-    private final String password = "";
-    private final String url = "";
+    /** PROJECT PARAM  **/
+    private final String baseDir = System.getProperty("user.dir");
+    private final String outputDir = baseDir + "//src//main//java";
+    private final String packageParentName = "com.mi.test";
+    private final String moduleName = null;
+    /** MYSQL DB  **/
+    private final String driverName = "com.mysql.jdbc.Driver";
+    private final String username = "root";
+    private final String password = "root";
+    private final String url = "jdbc:mysql://127.0.0.1:3306/mi?characterEncoding=utf8&useSSL=true";
+    private String[] tables = new String[]{"mi_sys_log"};
 
-    @Before
-    public void getTables() {
-        System.err.println("需要生成的表");
-    }
-
-
-    @Test
-    public void generator() {
-        System.err.println("开始生成");
-        AutoGenerator mpg = new AutoGenerator();
-
-        // 全局配置
+    /** 全局配置  **/
+    private GlobalConfig setGlobalConfig() {
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("D://");
+        gc.setOutputDir(outputDir);
         gc.setFileOverride(true);
-        gc.setActiveRecord(true);
+        gc.setActiveRecord(false);
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
         gc.setBaseColumnList(false);// XML columList
-        gc.setAuthor("Miyaow");
-
+        gc.setAuthor(StaticContantUtil.AUTHOR);
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         // gc.setMapperName("%sDao");
         // gc.setXmlName("%sDao");
         // gc.setServiceName("MP%sService");
         // gc.setServiceImplName("%sServiceDiy");
         // gc.setControllerName("%sAction");
-        mpg.setGlobalConfig(gc);
+        return gc;
+    }
 
-        // 数据源配置
+    /** 数据源配置  **/
+    private DataSourceConfig setDataSourceConfig() {
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDbType(DbType.MYSQL);
-        dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("root");
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/mi?characterEncoding=utf8&useSSL=true");
-        mpg.setDataSource(dsc);
+        dsc.setDriverName(driverName);
+        dsc.setUsername(username);
+        dsc.setPassword(password);
+        dsc.setUrl(url);
+        return dsc;
+    }
 
-        // 生成策略配置
+    /** 生成策略配置  **/
+    private StrategyConfig setStrategyConfig() {
         StrategyConfig strategy = new StrategyConfig();
-
-
         // strategy.setTablePrefix(new String[]{""});// 此处可以修改为您的表前缀
-        strategy.setInclude(new String[]{"mi_sys_log"}); // 需要生成的表
+        strategy.setInclude(tables); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
-
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-
         // 字段名生成策略
         // strategy.setFieldNaming(NamingStrategy.underline_to_camel);
         // 自定义实体父类
-        // strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");
+        //  strategy.setSuperEntityClass("com.mi.common.model.BaseModel");
         // 自定义实体，公共字段
         // strategy.setSuperEntityColumns(new String[] { "test_id", "age" });
         // 自定义 mapper 父类
@@ -97,39 +89,54 @@ public class MybatisPlusGenerator {
         // 【实体】是否为构建者模型（默认 false）
         // public User setName(String name) {this.name = name; return this;}
         // strategy.setEntityBuliderModel(true);
-        mpg.setStrategy(strategy);
+        return strategy;
+    }
 
-        // 包配置
+    /** 生成包配置 **/
+    private PackageConfig setPackageConfig() {
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("test");
-        mpg.setPackageInfo(pc);
+        pc.setParent(packageParentName);
+        pc.setModuleName(moduleName);
+        pc.setController("controller");
+        return pc;
+    }
 
-        // 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值
+    /** 自定义模板配置  **/
+    private TemplateConfig setTemplateConfig() {
+        TemplateConfig tc = new TemplateConfig();
+        return tc;
+    }
+    @Test
+    public void generator() {
+        AutoGenerator mpg = new AutoGenerator();
+
+        /** 全局配置 **/
+        mpg.setGlobalConfig(setGlobalConfig());
+        /**  数据源配置 **/
+        mpg.setDataSource(setDataSourceConfig());
+        /** 生成策略配置 **/
+        mpg.setStrategy(setStrategyConfig());
+        /** 生成包配置 **/
+        mpg.setPackageInfo(setPackageConfig());
+        /** 自定义模板配置 **/
+        mpg.setTemplate(setTemplateConfig());
+
+        /** 注入自定义配置，可以在 VM 中使用 MAP集合 设置的值 **/
         InjectionConfig cfg = new InjectionConfig() {
             @Override
             public void initMap() {
                 Map<String, Object> map = new HashMap<String, Object>();
-                map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
+                map.put("Name", this.getConfig().getGlobalConfig().getAuthor() + "-MP");
                 this.setMap(map);
             }
         };
         mpg.setCfg(cfg);
 
-        // 自定义模板配置
-        // TemplateConfig tc = new TemplateConfig();
-        // tc.setController("...");
-        // tc.setEntity("...");
-        // tc.setMapper("...");
-        // tc.setXml("...");
-        // tc.setService("...");
-        // tc.setServiceImpl("...");
-        // mpg.setTemplate(tc);
-
-        // 执行生成
+        /** 执行生成 **/
         mpg.execute();
 
-        // 打印注入设置
-        System.err.println(mpg.getCfg().getMap().get("abc"));
+        /** 打印注入设置 **/
+        System.err.println(mpg.getCfg().getMap().get("Name"));
     }
 
 
