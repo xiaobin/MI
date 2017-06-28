@@ -41,7 +41,7 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @ConditionalOnClass({EnableTransactionManagement.class})
-@MapperScan(basePackages={"com.mi.mapper"})
+@MapperScan(value = "com.mi.module.*.mapper")
 @Import({ DataBaseConfiguration.class})
 public class MybatisPlusConfig{
 
@@ -101,6 +101,8 @@ public class MybatisPlusConfig{
         }
         // MP 全局配置，更多内容进入类看注释
         GlobalConfiguration globalConfig = new GlobalConfiguration();
+        //驼峰下划线规则
+        globalConfig.setDbColumnUnderline(true);
         globalConfig.setDbType(DBType.MYSQL.name());
         // ID 策略
         // AUTO->`0`("数据库ID自增")

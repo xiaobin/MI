@@ -6,7 +6,7 @@
 
 #### - **`Mi Platform Center`**  MI 总平台管理中心
    
-    - 数据库读写分离配置
+    - 数据库读写分离配置(AOP切入控制层读写)
     - Druid 数据监控
     - Mybatis 升级为 Mybatis-Plus
     - Reids 缓存数据库

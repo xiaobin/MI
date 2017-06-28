@@ -40,14 +40,14 @@ public class DataBaseConfiguration {
      * 从库配置（负责读）
      * @return
      */
-    @Bean(name = "slaveDataSource")
+    @Bean(name = "slaveDataSourceOne")
     @ConfigurationProperties(prefix = "spring.slave",locations = "classpath:application.properties")
     public DataSource readDataSourceOne(){
         log.info("-------------------- Slave DataSource One init ---------------------");
         return DataSourceBuilder.create().type(dataSourceType).build();
     }
 
-    @Bean(name = "slaveDataSource1")
+    @Bean(name = "slaveDataSourceTwo")
     @ConfigurationProperties(prefix = "spring.slave1",locations = "classpath:application.properties")
     public DataSource readDataSourceTwo() {
         log.info("-------------------- Slave DataSource Two init ---------------------");

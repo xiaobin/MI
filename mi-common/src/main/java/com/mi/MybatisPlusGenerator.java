@@ -11,6 +11,8 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.mi.common.util.FileUtil.getOpPath;
+
 /**
  * MybatisPlus代码生成器
  *
@@ -19,25 +21,50 @@ import java.util.Map;
  *         Created by 2017/6/22.
  */
 public class MybatisPlusGenerator {
+    /** 长变参数 **/
+    private String[] tables;
+    private String moduleDir;
+    private final String packageParentName;
+    private final String moduleName;
 
-    /** PROJECT PARAM  **/
-    private final String baseDir = System.getProperty("user.dir");
-    private final String outputDir = baseDir + "//src//main//java";
-    private final String packageParentName = "com.mi.test";
-    private final String moduleName = null;
-    /** MYSQL DB  **/
+    {
+        tables = new String[]{"mi_sys_log"};
+    }
+
+    {
+        moduleDir = getOpPath("mi-admin","mi-platform-center"); //所用模块路径
+    }
+
+    {
+        packageParentName = "com.mi.module";
+    }
+
+    {
+        moduleName = "sys";
+    }
+
+    /**
+     * 项目参数 配置
+     **/
+    private final String userDir = System.getProperty("user.dir");
+    private final String proDir = userDir.substring(0, userDir.indexOf(getOpPath("mi-common"))); //EX: D:\MI\ 项目所在路径
+    private final String outputDir = proDir + moduleDir + getOpPath("src", "main", "java");
+    /**
+     * MYSQL 配置
+     **/
     private final String driverName = "com.mysql.jdbc.Driver";
     private final String username = "root";
     private final String password = "root";
     private final String url = "jdbc:mysql://127.0.0.1:3306/mi?characterEncoding=utf8&useSSL=true";
-    private String[] tables = new String[]{"mi_sys_log"};
 
-    /** 全局配置  **/
+    /**
+     * 全局配置
+     **/
     private GlobalConfig setGlobalConfig() {
         GlobalConfig gc = new GlobalConfig();
         gc.setOutputDir(outputDir);
         gc.setFileOverride(true);
-        gc.setActiveRecord(false);
+        gc.setActiveRecord(true);
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
         gc.setBaseColumnList(false);// XML columList
@@ -51,7 +78,9 @@ public class MybatisPlusGenerator {
         return gc;
     }
 
-    /** 数据源配置  **/
+    /**
+     * 数据源配置
+     **/
     private DataSourceConfig setDataSourceConfig() {
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDbType(DbType.MYSQL);
@@ -62,7 +91,9 @@ public class MybatisPlusGenerator {
         return dsc;
     }
 
-    /** 生成策略配置  **/
+    /**
+     * 生成策略配置
+     **/
     private StrategyConfig setStrategyConfig() {
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setTablePrefix(new String[]{""});// 此处可以修改为您的表前缀
@@ -89,23 +120,30 @@ public class MybatisPlusGenerator {
         // 【实体】是否为构建者模型（默认 false）
         // public User setName(String name) {this.name = name; return this;}
         // strategy.setEntityBuliderModel(true);
+        strategy.setCapitalMode(true);
         return strategy;
     }
 
-    /** 生成包配置 **/
+    /**
+     * 生成包配置
+     **/
     private PackageConfig setPackageConfig() {
         PackageConfig pc = new PackageConfig();
         pc.setParent(packageParentName);
         pc.setModuleName(moduleName);
         pc.setController("controller");
+        pc.setXml("mapper.impl");
         return pc;
     }
 
-    /** 自定义模板配置  **/
+    /**
+     * 自定义模板配置
+     **/
     private TemplateConfig setTemplateConfig() {
         TemplateConfig tc = new TemplateConfig();
         return tc;
     }
+
     @Test
     public void generator() {
         AutoGenerator mpg = new AutoGenerator();
@@ -120,6 +158,7 @@ public class MybatisPlusGenerator {
         mpg.setPackageInfo(setPackageConfig());
         /** 自定义模板配置 **/
         mpg.setTemplate(setTemplateConfig());
+
 
         /** 注入自定义配置，可以在 VM 中使用 MAP集合 设置的值 **/
         InjectionConfig cfg = new InjectionConfig() {

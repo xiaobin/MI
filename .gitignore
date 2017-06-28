@@ -1,7 +1,8 @@
 .idea
 *.iml
-#目录结构太长隐藏
+# 目录结构太长隐藏
 test
-#暂时隐藏
+# 暂时隐藏
 logs
-
+# 项目资源
+.project-resouce
