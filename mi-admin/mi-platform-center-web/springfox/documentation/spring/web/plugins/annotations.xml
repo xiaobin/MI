@@ -1,0 +1,5 @@
+<root>
+  <item name='springfox.documentation.spring.web.plugins.Docket'>
+    <annotation name='java.lang.Deprecated'/>
+  </item>
+</root>
