@@ -1,8 +1,8 @@
-package com.mi.module.sys.service.impl;
+package com.mi.module.system.service.impl;
 
-import com.mi.module.sys.entity.MiSysLog;
-import com.mi.module.sys.mapper.MiSysLogMapper;
-import com.mi.module.sys.service.IMiSysLogService;
+import com.mi.module.system.entity.MiSysLog;
+import com.mi.module.system.mapper.MiSysLogMapper;
+import com.mi.module.system.service.IMiSysLogService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

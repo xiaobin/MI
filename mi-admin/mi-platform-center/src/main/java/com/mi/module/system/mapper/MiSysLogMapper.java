@@ -1,6 +1,6 @@
-package com.mi.module.sys.mapper;
+package com.mi.module.system.mapper;
 
-import com.mi.module.sys.entity.MiSysLog;
+import com.mi.module.system.entity.MiSysLog;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

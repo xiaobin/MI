@@ -26,7 +26,7 @@ public class WebRequestLogAspect {
 
     ThreadLocal<Long> startTime = new ThreadLocal<>();
 
-    @Pointcut("execution(public * com.mi.controller..*.*(..))")
+    @Pointcut("execution(public * com.mi.module.*.controller..*.*(..))")
     public void webLog(){}
 
     @Before("webLog()")
@@ -38,7 +38,7 @@ public class WebRequestLogAspect {
         // 记录下请求内容
         log.info("URL : " + request.getRequestURL().toString());
         log.info("HTTP_METHOD : " + request.getMethod());
-        log.info("IP : " + request.getRemoteAddr());
+        log.info("IP : " + (request.getRemoteAddr().equals("0:0:0:0:0:0:0:1") ? "127.0.0.1":request.getRemoteAddr()));
         log.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
         log.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
     }
