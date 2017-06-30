@@ -1,5 +1,5 @@
 server:
-  port: 1001
+  port: 2001
 spring:
   application:
     name: MI-EUREKA-CLIENT
@@ -7,11 +7,11 @@ spring:
     auto: true # 开启AOP功能
   boot:
      admin:
-      url: http://localhost:1005  # 应用服务监控
+      url: http://localhost:1000  # 应用服务监控
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1000/eureka/  # http://mitwo:2000/eureka/
+      defaultZone: http://localhost:2000/eureka/  # http://mitwo:2000/eureka/
   instance:
     status-page-url: http://localhost:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
 

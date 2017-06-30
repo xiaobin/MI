@@ -36,12 +36,15 @@
 
     <modules>
         <module>mi-common</module>
+        <!-- Start in module order -->
+        <module>mi-admin/mi-spring-boot-admin</module>
+        <module>mi-api/mi-eureka-server</module>
+
+        <module>mi-api/mi-eureka-client</module>
 
         <!--<module>mi-admin/mi-platform-center</module>-->
-        <module>mi-admin/mi-spring-boot-admin</module>
 
-        <module>mi-api/mi-eureka-server</module>
-        <!--<module>mi-api/mi-eureka-client</module>-->
+
         <!--<module>mi-api/mi-eureka-discovery</module>-->
 
     </modules>

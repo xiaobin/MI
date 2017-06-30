@@ -5,7 +5,7 @@ spring:
     name: MI-SB-ADMIN-WEB
   boot:
     admin:
-      url: http://127.0.0.1:${server.port}
+      url: http://localhost:${server.port}
       username: "${security.user.name}"       #These two are needed so that the client
       password: "${security.user.password}"   #can register at the protected server api
     client:
