@@ -1,5 +1,5 @@
 server:
-  port: 1005
+  port: 1000
 spring:
   application:
     name: MI-SB-ADMIN-WEB
