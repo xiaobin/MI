@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>mi.springboot.admin</groupId>
+    <groupId>mi.spring.boot.admin</groupId>
     <artifactId>mi-spring-boot-admin</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>mi-spring-boot-admin</name>
-    <description>Spring Boot Admin Web</description>
+    <description>应用监控中心</description>
 
     <parent>
         <groupId>mi</groupId>

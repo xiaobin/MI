@@ -5,8 +5,8 @@
 
 	<groupId>com.mi</groupId>
 	<artifactId>mi-api</artifactId>
-	<version>1.00</version>
-	<packaging>jar</packaging>
+	<version>1.0</version>
+	<packaging>pom</packaging>
 
 	<name>mi-api</name>
 	<description>About Api</description>
