@@ -20,7 +20,6 @@ public class SwaggerController {
 
     @ApiOperation(value = "接口简介",notes = "接口详细描述")
     @ApiImplicitParam(name = "name",required = true,paramType = "query" ,dataType = "String")
-    @ResponseBody
     @RequestMapping(value = "hello" ,method = RequestMethod.GET)
     public String hello(@RequestParam(value = "name",required = false) String name){
         return "Hello Swagger : my name is "+ name;

@@ -19,7 +19,6 @@ public class TestController {
 
     @ApiOperation(value = "TEST接口简介",notes = "接口详细描述")
     @ApiImplicitParam(name = "user",dataType = "User")
-    @ResponseBody
     @RequestMapping(value = "helloTest" ,method = RequestMethod.POST)
     public String hello(@RequestBody User user){
         return "Hello Swagger : my name is "+user.getName();

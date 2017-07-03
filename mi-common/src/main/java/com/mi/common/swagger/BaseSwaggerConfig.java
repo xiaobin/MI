@@ -10,7 +10,6 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
@@ -60,7 +59,7 @@ public class BaseSwaggerConfig {
                 .description(initContextInfo())
                 .version("1.0.0")
                 .termsOfServiceUrl("http://blog.csdn.net/fjnpysh")
-                .contact(new Contact("MIYAOW",null,null))
+                .contact("MIYAOW")
                 .license("请联系我的博客")
                 .licenseUrl("http://blog.csdn.net/fjnpysh")
                 .build();
