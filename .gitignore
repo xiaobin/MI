@@ -9,3 +9,4 @@ logs
 .gitignore
 mi-app
 classes
+/.gitignore
