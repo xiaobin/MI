@@ -31,7 +31,7 @@ public class MybatisPlusGenerator {
         tables = new String[]{"mi_sys_log"};//生成表名
         moduleDir = getOpPath("mi-admin","mi-platform-center"); //所用模块路径
         packageParentName = "com.mi.module";
-        moduleName = "test"; //模块包名
+        moduleName = "test1"; //模块包名
     }
 
     /**
