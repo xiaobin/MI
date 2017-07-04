@@ -1,4 +1,4 @@
-package com.mi.config.database;
+package com.mi.config.aspect.database;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,9 +1,11 @@
+logs
+# 项目资源
+
 .idea
+.project-resouce
 *.iml
 # 目录结构太长隐藏
 test
 # 暂时隐藏
-logs
-# 项目资源
-.project-resouce
 mi-app
+

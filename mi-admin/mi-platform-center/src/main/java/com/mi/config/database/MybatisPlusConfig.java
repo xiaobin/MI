@@ -1,4 +1,4 @@
-package com.mi.config.database;
+package com.mi.config.aspect.database;
 
 import com.baomidou.mybatisplus.MybatisConfiguration;
 import com.baomidou.mybatisplus.MybatisXMLLanguageDriver;

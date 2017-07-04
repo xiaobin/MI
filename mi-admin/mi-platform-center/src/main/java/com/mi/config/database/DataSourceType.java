@@ -1,4 +1,4 @@
-package com.mi.config.database;
+package com.mi.config.aspect.database;
 import lombok.Getter;
 
 /**
