@@ -2,7 +2,6 @@ package com.mi.common.swagger;
 
 import com.mi.common.annotation.Dev;
 import com.mi.common.annotation.Pro;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -18,23 +17,24 @@ import java.util.Collections;
 
 /**
  * Swagger配置模版（各自项目可粘帖到自个项目使用）
+ *
  * @author yesh
  *         (M.M)!
  *         Created by 2017/5/7.
  */
 public class BaseSwaggerConfig {
 
-    private Docket createApiDoc(String groupName, Class<? extends Annotation> annotation){
+    private Docket createApiDoc(String groupName, Class<? extends Annotation> annotation) {
         return
                 new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(initApiInfo())
-                .groupName(groupName)
-                .consumes(Collections.singleton(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
-                .produces(Collections.singleton(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(annotation)) //多种方式选择扫描区别分组
-                .paths(PathSelectors.any())
-                .build();
+                        .apiInfo(initApiInfo())
+                        .groupName(groupName)
+                        .consumes(Collections.singleton(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
+                        .produces(Collections.singleton(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                        .select()
+                        .apis(RequestHandlerSelectors.withClassAnnotation(annotation)) //多种方式选择扫描区别分组
+                        .paths(PathSelectors.any())
+                        .build();
     }
 
     @Bean
@@ -44,7 +44,7 @@ public class BaseSwaggerConfig {
 
     @Bean
     public Docket createRestAp2i() {
-        return this.createApiDoc("pro",Pro.class);
+        return this.createApiDoc("pro", Pro.class);
     }
 
     private ApiInfo initApiInfo() {

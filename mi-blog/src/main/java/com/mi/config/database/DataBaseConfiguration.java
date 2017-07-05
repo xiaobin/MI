@@ -7,6 +7,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -20,6 +22,8 @@ import java.util.List;
  */
 @Slf4j
 @Configuration
+@Component
+@PropertySource(value = "classpath:application.properties")
 public class DataBaseConfiguration {
 
     @Value("${spring.datasource.type}")
@@ -31,7 +35,7 @@ public class DataBaseConfiguration {
      */
     @Bean(name="masterDataSource", destroyMethod = "close", initMethod="init")
     @Primary
-    @ConfigurationProperties(prefix = "spring.datasource",locations = "classpath:application.properties")
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource writeDataSource() {
         log.info("-------------------- Master DataSource init ---------------------");
         return DataSourceBuilder.create().type(dataSourceType).build();
@@ -41,7 +45,7 @@ public class DataBaseConfiguration {
      * @return
      */
     @Bean(name = "slaveDataSourceOne")
-    @ConfigurationProperties(prefix = "spring.slave",locations = "classpath:application.properties")
+    @ConfigurationProperties(prefix = "spring.slave")
     public DataSource readDataSourceOne(){
         log.info("-------------------- Slave DataSource One init ---------------------");
         return DataSourceBuilder.create().type(dataSourceType).build();

@@ -19,7 +19,7 @@ public class BaseResult {
     private Object data; //附加数据
 
     public void setCode(ReturnCode rc) {
-        this.code = rc.code;
+        this.code = rc.getCode();
     }
     public BaseResult(){
         super();
@@ -31,8 +31,8 @@ public class BaseResult {
     public BaseResult(Object obj,ReturnCode rc){
         super();
         this.data = obj;
-        this.code = rc.code;
-        this.msg = rc.name();
+        this.code = rc.getCode();
+        this.msg = rc.getName();
     }
 
 

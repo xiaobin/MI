@@ -5,7 +5,7 @@
 
     <property name="LOG_PATH" value="logs"></property>
 
-    <property name="DIR_PATH" value="mi_platform_center"></property>
+    <property name="DIR_PATH" value="mi_blog"></property>
 
     <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/${DIR_PATH}/log_error.log</file>

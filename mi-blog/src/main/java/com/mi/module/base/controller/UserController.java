@@ -1,5 +1,7 @@
 package com.mi.module.base.controller;
 
+import com.mi.common.model.BaseResult;
+import com.mi.common.model.ReturnCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,14 @@ public class UserController {
 
     @Autowired
     IUserService iUserService;
+
+    @RequestMapping(value = "test")
+    public BaseResult test(){
+        BaseResult br;
+        br = new BaseResult("数据", ReturnCode.SUCCESS);
+        return br;
+    }
+
 
     /** selectById **/
     @RequestMapping(value = "selectById")

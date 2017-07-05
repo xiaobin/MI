@@ -15,7 +15,16 @@ public enum ReturnCode {
     INTERNAL_SERVER_ERROR("服务器内部错误",500);
 
     private String name;
-    public int code;
+    private int code;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
 
     ReturnCode(String name,int code) {
         this.name = name;
