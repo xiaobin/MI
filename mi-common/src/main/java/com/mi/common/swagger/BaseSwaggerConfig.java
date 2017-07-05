@@ -24,11 +24,6 @@ import java.util.Collections;
  */
 public class BaseSwaggerConfig {
 
-    @Value("${server.port}")
-    private String serverPort;
-
-    private String contentPath;
-
     private Docket createApiDoc(String groupName, Class<? extends Annotation> annotation){
         return
                 new Docket(DocumentationType.SWAGGER_2)
