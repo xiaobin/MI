@@ -137,7 +137,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.birdben.App</mainClass>
+                            <mainClass>com.mi.MiCommonApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
