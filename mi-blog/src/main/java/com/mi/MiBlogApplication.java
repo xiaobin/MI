@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+
 @EnableConfigurationProperties
 @SpringBootApplication
 public class MiBlogApplication {

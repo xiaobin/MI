@@ -128,6 +128,12 @@
     <build>
         <finalName>mi-common</finalName>
         <plugins>
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
+
+            <!-- Spring-boot:run 启动打包 -->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
@@ -151,6 +157,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 
