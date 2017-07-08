@@ -14,4 +14,9 @@
 		<result column="create_time" property="createTime" />
 	</resultMap>
 
+	<select id="selectByName" resultMap="BaseResultMap" parameterType="String">
+		select * FROM blog_user u
+		where u.user_name = #{username}
+	</select>
+
 </mapper>

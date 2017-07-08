@@ -2,6 +2,7 @@ package com.mi.module.base.mapper;
 
 import com.mi.module.base.entity.User;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.poi.ss.formula.functions.T;
 
 /**
@@ -12,6 +13,8 @@ import org.apache.poi.ss.formula.functions.T;
  *         (M.M)!
  *         Created by 2017-07-04.
  */
+@Mapper
 public interface UserMapper extends BaseMapper<User> {
 
+    User selectByName(String username);
 }

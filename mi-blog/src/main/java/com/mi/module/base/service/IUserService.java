@@ -12,5 +12,11 @@ import com.baomidou.mybatisplus.service.IService;
  *         Created by 2017-07-04.
  */
 public interface IUserService extends IService<User> {
-	
+
+    /**
+     * 根据用户名获取用户登录信息
+     * @param username
+     * @return
+     */
+    User selectByName(String username);
 }

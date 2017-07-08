@@ -39,6 +39,8 @@
         <mybatis-plus.version>2.0.8</mybatis-plus.version>
         <druid.version>1.0.28</druid.version>
 
+        <thymeleaf.version> 3.0.3.RELEASE </thymeleaf.version>
+        <thymeleaf-layout-dialect.version> 2.1.1 </thymeleaf-layout-dialect.version>
     </properties>
 
     <modules>

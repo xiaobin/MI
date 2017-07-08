@@ -6,6 +6,8 @@ import com.mi.module.base.service.IUserService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * 
  * 博客用户; InnoDB free: 3072 kB 服务实现类
@@ -16,5 +18,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
-	
+
+    @Resource
+    private UserMapper userMapper;
+
+    @Override
+    public User selectByName(String username) {
+        return userMapper.selectByName(username);
+    }
 }

@@ -33,6 +33,11 @@ public class UserController {
         return br;
     }
 
+    @RequestMapping(value = "selectByName")
+    public User selectByName(@RequestParam String name){
+        User entity = iUserService.selectByName(name);
+        return entity;
+    }
 
     /** selectById **/
     @RequestMapping(value = "selectById")
