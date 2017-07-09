@@ -1,9 +1,7 @@
 package com.mi.config.auth;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.mi.module.base.entity.User;
-import com.mi.module.base.service.IUserService;
+import com.mi.module.blog.entity.User;
+import com.mi.module.blog.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.*;

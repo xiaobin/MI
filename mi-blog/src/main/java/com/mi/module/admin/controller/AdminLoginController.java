@@ -12,12 +12,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AdminLoginController {
 
-    /**
-     *  跳转到登录页面
-     * @return
-     */
-    @RequestMapping("/login")
-    public String loginPage() {
-        return "login";
-    }
+
 }

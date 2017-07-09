@@ -1,8 +1,8 @@
 package com.mi.config.aspect;
 
 import com.alibaba.fastjson.JSON;
-import com.mi.module.base.entity.Log;
-import com.mi.module.base.mapper.LogMapper;
+import com.mi.module.blog.entity.Log;
+import com.mi.module.blog.mapper.LogMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;

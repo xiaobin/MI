@@ -13,12 +13,12 @@
     <div class="outer">
 
         <aside id="profile">
-            <!--个人基础信息-->
-            <div class="inner profile-inner" th:replace="blog/part/base-of-me :: base_of_me"></div>
-            <!--友情链接-->
-            <div class="inner profile-inner" th:replace="blog/part/friend-link :: friend_link"></div>
-            <!--微信公众号信息-->
-            <!--<div class="inner profile-inner" th:replace="blog/part/wechat-info :: wechat_info"></div>-->
+            <!--&lt;!&ndash;个人基础信息&ndash;&gt;-->
+            <!--<div class="inner profile-inner" th:replace="blog/part/base-of-me :: base_of_me"></div>-->
+            <!--&lt;!&ndash;友情链接&ndash;&gt;-->
+            <!--<div class="inner profile-inner" th:replace="blog/part/friend-link :: friend_link"></div>-->
+            <!--&lt;!&ndash;微信公众号信息&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="inner profile-inner" th:replace="blog/part/wechat-info :: wechat_info"></div>&ndash;&gt;-->
         </aside>
 
 
@@ -27,19 +27,19 @@
                 <div id="loader"></div>
                 <div class="loader-section section-left"></div>
                 <div class="loader-section section-right"></div>
-                <div class="load_title">正在加载EumJi站点....<br><span>V1.0</span></div>
+                <div class="load_title">正在努力加载站点....<br><span>V1.0</span></div>
             </div>
             <div id="main-article">
 
             </div>
             <div style="margin-top: -29px;height:50px">
                 <div style="float: left;display: none" class="pagination">共
-                <span id="total-num"></span>
-                条记录
-                <span id="current-page"></span>
-                /
-                <span id="total-page"></span>
-            </div>
+                    <span id="total-num"></span>
+                    条记录
+                    <span id="current-page"></span>
+                    /
+                    <span id="total-page"></span>
+                </div>
 
 
                 <div id="pagination" data-type="article" class="pagination" style="float: right">
@@ -49,15 +49,15 @@
         </section>
 
         <aside id="sidebar">
-            <!--公告-->
-            <div class="widget-wrap" th:replace="blog/part/announcement :: announcement"></div>
+            <!--&lt;!&ndash;公告&ndash;&gt;-->
+            <!--<div class="widget-wrap" th:replace="blog/part/announcement :: announcement"></div>-->
             <!--每日一言-->
             <div class="widget-wrap" th:replace="blog/part/aphorism :: aphorism"></div>
-            <!--文章分类-->
-            <div class="widget-wrap" th:replace="blog/part/classification :: classification"></div>
-            <!--文章归档-->
-            <div class="widget-wrap" th:replace="blog/part/article-archive :: article-archive"></div>
-           <!-- <div class="widget-wrap" th:replace="blog/part/label-info :: label-info"></div>-->
+            <!--&lt;!&ndash;文章分类&ndash;&gt;-->
+            <!--<div class="widget-wrap" th:replace="blog/part/classification :: classification"></div>-->
+            <!--&lt;!&ndash;文章归档&ndash;&gt;-->
+            <!--<div class="widget-wrap" th:replace="blog/part/article-archive :: article-archive"></div>-->
+            <!--&lt;!&ndash; <div class="widget-wrap" th:replace="blog/part/label-info :: label-info"></div>&ndash;&gt;-->
 
             <div id="toTop" class="fa fa-angle-up"></div>
         </aside>
