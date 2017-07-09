@@ -6,6 +6,9 @@ import com.mi.module.blog.service.IFriendlinkService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
  * 
  * 友情链接; InnoDB free: 11264 kB 服务实现类
@@ -16,5 +19,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class FriendlinkServiceImpl extends ServiceImpl<FriendlinkMapper, Friendlink> implements IFriendlinkService {
-	
+
+    @Resource
+    private FriendlinkMapper friendlinkMapper;
+
+    @Override
+    public List<Friendlink> selectAllList() {
+        return friendlinkMapper.selectAllList();
+    }
 }

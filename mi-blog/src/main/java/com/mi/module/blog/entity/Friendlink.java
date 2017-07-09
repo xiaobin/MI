@@ -28,8 +28,8 @@ public class Friendlink extends Model<Friendlink> {
     /**
      * 站点名称
      */
-	@TableField("size_name")
-	private String sizeName;
+	@TableField("site_name")
+	private String siteName;
     /**
      * 站点地址
      */
@@ -64,12 +64,12 @@ public class Friendlink extends Model<Friendlink> {
 		this.flinkId = flinkId;
 	}
 
-	public String getSizeName() {
-		return sizeName;
+	public String getSiteName() {
+		return siteName;
 	}
 
-	public void setSizeName(String sizeName) {
-		this.sizeName = sizeName;
+	public void setSiteName(String siteName) {
+		this.siteName = siteName;
 	}
 
 	public String getSiteUrl() {

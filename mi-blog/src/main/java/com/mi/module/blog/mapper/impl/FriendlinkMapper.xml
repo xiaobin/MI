@@ -5,7 +5,7 @@
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.mi.module.blog.entity.Friendlink">
 		<id column="flink_id" property="flinkId" />
-		<result column="size_name" property="sizeName" />
+		<result column="site_name" property="siteName" />
 		<result column="site_url" property="siteUrl" />
 		<result column="site_author" property="siteAuthor" />
 		<result column="site_desc" property="siteDesc" />
@@ -13,4 +13,7 @@
 		<result column="create_time" property="createTime" />
 	</resultMap>
 
+	<select id="selectAllList" resultMap="BaseResultMap" >
+		select * from blog_friendlink
+	</select>
 </mapper>

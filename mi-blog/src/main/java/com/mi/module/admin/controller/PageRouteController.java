@@ -1,8 +1,10 @@
 package com.mi.module.admin.controller;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.mi.module.blog.entity.Friendlink;
 import com.mi.module.blog.entity.User;
 import com.mi.module.blog.entity.UserInfo;
+import com.mi.module.blog.service.IFriendlinkService;
 import com.mi.module.blog.service.IUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * 页面路由控制器
@@ -26,6 +29,8 @@ public class PageRouteController {
     @Autowired
     private IUserInfoService iUserInfoService;
 
+    @Autowired
+    private IFriendlinkService iFriendlinkService;
 
     /******************** 博客后台 ********************/
 
@@ -53,7 +58,12 @@ public class PageRouteController {
     public String home(Model model){
         //后期参数定义 做成多博客系统
         UserInfo uInfo = iUserInfoService.selectByUserId("1");
+        //友情链接
+        List<Friendlink> fLinkList = iFriendlinkService.selectAllList();
+
         model.addAttribute("userInfo",uInfo);
+        model.addAttribute("fLinkList",fLinkList);
+
         return "blog/index";
     }
     /** 登录页面 **/
