@@ -1,7 +1,3 @@
-/**
- * Created by EumJi on 2017/4/9.
- */
-
 /*$("#login-button").click(function () {
     loginSubmit();
 });*/

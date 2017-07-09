@@ -7,8 +7,7 @@
 <body>
 <!--<div class="loader"></div>-->
 <div id="container">
-    <header id="header" th:replace="blog/part/header :: header">
-    </header>
+    <header id="header" th:replace="blog/part/header :: header" />
 
     <div class="outer">
 
@@ -20,7 +19,7 @@
             <div class="inner profile-inner" th:replace="blog/part/friend-link :: friend_link"></div>
 
             <!--微信公众号信息-->
-            <!--&lt;!&ndash;<div class="inner profile-inner" th:replace="blog/part/wechat-info :: wechat_info"></div>&ndash;&gt;-->
+            <div class="inner profile-inner" th:replace="blog/part/wechat-info :: wechat_info"></div>
         </aside>
 
 

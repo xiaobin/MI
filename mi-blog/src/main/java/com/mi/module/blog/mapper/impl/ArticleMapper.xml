@@ -15,4 +15,22 @@
 		<result column="look_count" property="lookCount" />
 	</resultMap>
 
+	<!--获取文章的时间归档列表 -->
+	<select id="selectArticleArchiveList" resultType="java.util.Map">
+		select DATE_FORMAT(create_time,'%Y年%m月') create_time,count(article_id) count
+		from blog_article
+		group by DATE_FORMAT(create_time,'%Y年%m月') ORDER BY create_time desc
+	</select>
+
+	<select id="selectArticleListByKeywords"  resultMap="BaseResultMap" parameterType="Map">
+		<if test="keyword != null and keyword != ''">
+			select article_id,title,description
+			from blog_article
+			where title like concat('%',#{keyword},'%') or description like concat('%',#{keyword},'%') or content like concat('%',#{keyword},'%') limit 0,10
+		</if>
+		<if test="keyword == null or keyword == ''">
+			select article_id,title,description
+			from blog_article limit 0,10
+		</if>
+	</select>
 </mapper>
