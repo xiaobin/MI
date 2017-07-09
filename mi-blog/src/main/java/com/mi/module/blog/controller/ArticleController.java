@@ -1,14 +1,14 @@
 package com.mi.module.blog.controller;
 
+import com.mi.data.vo.ArticleCustom;
 import com.mi.data.vo.Pager;
+import com.mi.module.blog.entity.Article;
 import com.mi.module.blog.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.mi.module.blog.entity.Article;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +16,6 @@ import java.util.Map;
 
 
 /**
- *
  * 文章; InnoDB free: 11264 kB 控制器
  *
  * @author yesh
@@ -40,30 +39,32 @@ public class ArticleController {
 
     /**
      * 加载分页列表数据
+     *
      * @param model
      * @return
      */
     @RequestMapping("/load")
-    public String loadArticle(Pager<Article> pager, Model model){
-
+    public String loadArticle(Pager<Article> pager, Model model) {
+        List<ArticleCustom> articleList = iArticleService.selectArticleList(pager);
+        model.addAttribute("articleList", articleList);
         return "blog/part/articleSummary";
     }
 
     /**
      * 全局搜索
+     *
      * @param keyword 关键字
      * @param model
      * @return
      */
     @RequestMapping("/content/search")
-    public String search(@RequestParam(value = "keyword",required = false) String keyword,Model model) {
-        System.err.println(""+keyword);
-        Map<String,Object> paramMap = new HashMap<>();
-        paramMap.put("keyword",keyword);
+    public String search(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
+        System.err.println("" + keyword);
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("keyword", keyword);
         List<Article> articleList = iArticleService.selectArticleListByKeywords(paramMap);
-        model.addAttribute("articleList",articleList);
+        model.addAttribute("articleList", articleList);
         return "blog/part/search-info";
     }
-
 
 }

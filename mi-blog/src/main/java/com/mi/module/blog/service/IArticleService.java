@@ -1,5 +1,6 @@
 package com.mi.module.blog.service;
 
+import com.mi.data.vo.ArticleCustom;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Article;
 import com.baomidou.mybatisplus.service.IService;
@@ -33,4 +34,11 @@ public interface IArticleService extends IService<Article> {
      * @return
      */
     List<Article> selectArticleListByKeywords(Map map);
+
+    /**
+     * 首页加载文章列表
+     * @param pager
+     * @return
+     */
+    List<ArticleCustom> selectArticleList(Pager<Article> pager);
 }

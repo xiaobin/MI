@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mi.module.blog.mapper.ArticleMapper">
-
+	<cache eviction="LRU" flushInterval="60000" readOnly="true"/>
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.mi.module.blog.entity.Article">
 		<id column="article_id" property="articleId" />
@@ -14,6 +14,50 @@
 		<result column="update_time" property="updateTime" />
 		<result column="look_count" property="lookCount" />
 	</resultMap>
+
+	<resultMap id="article" type="com.mi.data.vo.ArticleCustom">
+		<id column="article_id" property="articleId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="description" property="description" />
+		<result column="status" property="status" />
+		<result column="author" property="author" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="look_count" property="lookCount" />
+		<collection property="tagList" column="article_id" select="getTag"/>
+		<collection property="typeList" column="article_id" select="getType"/>
+
+	</resultMap>
+
+	<!--获取所有的文章-->
+	<select id="getArticleCount" resultType="int">
+		select count(article_id) from blog_article where status = 1
+	</select>
+
+	<select id="selectArticleList" resultMap="article">
+       select * from  blog_article ba
+       where ba.status = 1
+       order by ba.create_time desc limit #{start},#{limit}
+	</select>
+	<!--通过文章id获取tag列表-->
+	<select id="getTag" resultType="com.mi.module.blog.entity.Tag">
+		select
+			article_id as articleId,
+			tag_id as tagId,
+			tag_name as tagName
+		from blog_article_tag
+		where article_id = #{articleId}
+	</select>
+	<!--通过文章id获取Type列表-->
+	<select id="getType" resultType="com.mi.module.blog.entity.Type">
+		select
+			article_id as articleId,
+			type_id as typeId,
+			type_name as typeName
+		from blog_article_type
+		where article_id = #{articleId}
+	</select>
 
 	<!--获取文章的时间归档列表 -->
 	<select id="selectArticleArchiveList" resultType="java.util.Map">

@@ -1,6 +1,7 @@
 package com.mi.module.blog.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.mi.data.vo.ArticleCustom;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Article;
 import com.mi.module.blog.mapper.ArticleMapper;
@@ -41,5 +42,10 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     public List<Article> selectArticleListByKeywords(Map map) {
         return articleMapper.selectArticleListByKeywords(map);
+    }
+
+    @Override
+    public List<ArticleCustom> selectArticleList(Pager<Article> pager) {
+        return articleMapper.selectArticleList(pager);
     }
 }
