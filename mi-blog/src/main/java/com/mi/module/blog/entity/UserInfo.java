@@ -64,6 +64,10 @@ public class UserInfo extends Model<UserInfo> {
      * 个性签名
      */
 	private String signature;
+	/**
+	 * 公告
+	 */
+	private String announcement;
 
 
 	public String getInfoId() {
@@ -144,6 +148,14 @@ public class UserInfo extends Model<UserInfo> {
 
 	public void setSignature(String signature) {
 		this.signature = signature;
+	}
+
+	public String getAnnouncement() {
+		return announcement;
+	}
+
+	public void setAnnouncement(String announcement) {
+		this.announcement = announcement;
 	}
 
 	@Override

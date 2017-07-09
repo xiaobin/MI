@@ -16,4 +16,8 @@
 		<result column="signature" property="signature" />
 	</resultMap>
 
+	<select id="selectByUserId" resultMap="BaseResultMap" parameterType="string">
+		select * from blog_user_info ui
+		where ui.user_id = #{uid}
+	</select>
 </mapper>

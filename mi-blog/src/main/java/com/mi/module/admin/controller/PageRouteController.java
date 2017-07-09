@@ -1,6 +1,10 @@
 package com.mi.module.admin.controller;
 
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.mi.module.blog.entity.User;
+import com.mi.module.blog.entity.UserInfo;
+import com.mi.module.blog.service.IUserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +22,11 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class PageRouteController {
+
+    @Autowired
+    private IUserInfoService iUserInfoService;
+
+
     /******************** 博客后台 ********************/
 
     /** 文章首页 **/
@@ -42,9 +51,9 @@ public class PageRouteController {
     /** 首页**/
     @RequestMapping("/")
     public String home(Model model){
-
-
-
+        //后期参数定义 做成多博客系统
+        UserInfo uInfo = iUserInfoService.selectByUserId("1");
+        model.addAttribute("userInfo",uInfo);
         return "blog/index";
     }
     /** 登录页面 **/

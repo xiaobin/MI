@@ -12,5 +12,7 @@ import com.baomidou.mybatisplus.service.IService;
  *         Created by 2017-07-09.
  */
 public interface IUserInfoService extends IService<UserInfo> {
-	
+
+    /** 通过用户ID 获取用户详细 **/
+    UserInfo selectByUserId(String uid);
 }
