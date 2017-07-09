@@ -13,11 +13,13 @@
     <div class="outer">
 
         <aside id="profile">
-            <!--&lt;!&ndash;个人基础信息&ndash;&gt;-->
-            <!--<div class="inner profile-inner" th:replace="blog/part/base-of-me :: base_of_me"></div>-->
-            <!--&lt;!&ndash;友情链接&ndash;&gt;-->
+            <!--个人基础信息-->
+            <div class="inner profile-inner" th:replace="blog/part/base-of-me :: base_of_me"></div>
+
+            <!--友情链接-->
             <!--<div class="inner profile-inner" th:replace="blog/part/friend-link :: friend_link"></div>-->
-            <!--&lt;!&ndash;微信公众号信息&ndash;&gt;-->
+
+            <!--微信公众号信息-->
             <!--&lt;!&ndash;<div class="inner profile-inner" th:replace="blog/part/wechat-info :: wechat_info"></div>&ndash;&gt;-->
         </aside>
 
@@ -54,6 +56,7 @@
 
             <!--每日一言-->
             <div class="widget-wrap" th:replace="blog/part/aphorism :: aphorism"></div>
+
             <!--&lt;!&ndash;文章分类&ndash;&gt;-->
             <!--<div class="widget-wrap" th:replace="blog/part/classification :: classification"></div>-->
             <!--&lt;!&ndash;文章归档&ndash;&gt;-->
