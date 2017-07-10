@@ -7,5 +7,10 @@ logs
 # 目录结构太长隐藏
 test
 # 暂时隐藏
+mi-admin
+mi-api
 mi-app
+
+
+mi-config
 
