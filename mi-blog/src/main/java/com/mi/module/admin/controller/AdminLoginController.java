@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class AdminLoginController {
-
+    //登录使用Spring Security
 
 }

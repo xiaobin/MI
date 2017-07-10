@@ -1,17 +1,19 @@
 package com.mi.module.base.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Friendlink;
+import com.mi.module.blog.entity.Tag;
+import com.mi.module.blog.entity.Type;
 import com.mi.module.blog.entity.UserInfo;
-import com.mi.module.blog.service.IArticleService;
-import com.mi.module.blog.service.IFriendlinkService;
-import com.mi.module.blog.service.IUserInfoService;
+import com.mi.module.blog.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.tags.form.InputTag;
 
 import java.util.List;
 import java.util.Map;
@@ -34,19 +36,66 @@ public class PageRouteController {
     @Autowired
     private IArticleService iArticleService;
 
+    @Autowired
+    private ITagService iTagService;
+
+    @Autowired
+    private ITypeService iTypeService;
+
     /******************** 博客后台 ********************/
+
+
+
+    /**跳转到友链展示页面
+     * @return
+     */
+    @RequestMapping("/admin/flink/list")
+    public String flinkPage(Model model){
+        UserInfo userInfo =  iUserInfoService.selectByUserId("1");
+        model.addAttribute("userInfo",userInfo);
+        return "admin/flink/flinkList";
+    }
+
+    /**
+     * 跳转到分类列表页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/admin/type/list")
+    public String typePage(Model model){
+        UserInfo userInfo =  iUserInfoService.selectByUserId("1");
+        model.addAttribute("userInfo",userInfo);
+        return "admin/type/typeList";
+    }
+
+    /**
+     * 跳转标签展示页面
+     * @param model
+     * @return
+     */
+    @RequestMapping("/admin/tag/list")
+    public String tagPage(Model model) {
+        UserInfo userInfo =  iUserInfoService.selectByUserId("1");
+        model.addAttribute("userInfo",userInfo);
+        return "admin/tag/tagList";
+    }
 
     /** 文章首页 **/
     @RequestMapping("/admin/article/list")
-    public String labelPage(Model model){
+    public String articlePage(Model model){
+        EntityWrapper<Tag> eTag = new  EntityWrapper();
+        EntityWrapper<Type> eType = new  EntityWrapper();
 
+        List<Tag> tagList = iTagService.selectList(eTag);
+        List<Type> typeList = iTypeService.selectList(eType);
+        UserInfo userInfo =  iUserInfoService.selectByUserId("1");
 
-        model.addAttribute("userInfo",null);
-        model.addAttribute("tagList",null);
-        model.addAttribute("categoryList",null);
+        model.addAttribute("userInfo",userInfo);
+        model.addAttribute("tagList",tagList);
+        model.addAttribute("typeList",typeList);
         return "admin/article/articleList";
     }
-    /** 后台首页 **/
+      /** 后台首页 **/
     @RequestMapping("/admin/home")
     public String homePage(){
         return "redirect:/admin/article/list";

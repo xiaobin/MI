@@ -48,4 +48,11 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     public List<ArticleCustom> selectArticleList(Pager<Article> pager) {
         return articleMapper.selectArticleList(pager);
     }
+
+    @Override
+    public List<Article> loadArticle(Map<String, Object> param) {
+        return articleMapper.loadArticle(param);
+    }
+
+
 }

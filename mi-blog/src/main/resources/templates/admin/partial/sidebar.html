@@ -6,12 +6,12 @@
 
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                                        <img alt="image" class="img-circle" th:src="${userInfo.avatar}"/>
+                                        <img alt="image" class="img-circle" th:src="${userInfo.avatarUrl}"/>
                                          </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0)">
                                             <span class="clear">
                                                 <span class="block m-t-xs">
-                                                    <strong class="font-bold">[[${userInfo.nickname}]]</strong>
+                                                    <strong class="font-bold">[[${userInfo.nickName}]]</strong>
                                                 </span>
                                                 <span class="text-muted text-xs block">
                                                         超级管理员
@@ -57,12 +57,12 @@
                 </li>
                 <li id="partner-manage-li">
                     <a href="javascript:void(0)"><i class="fa fa fa-qrcode"></i>
-                        <span class="nav-label">合作伙伴管理</span>
+                        <span class="nav-label">友情链接管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li id="partner-list-li">
-                            <a href="/admin/partner/list">合作伙伴列表</a>
+                            <a href="/admin/flink/list">友情链接列表</a>
                         </li>
                     </ul>
                 </li>
@@ -73,7 +73,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li id="category-list-li">
-                            <a href="/admin/category/list">分类列表</a>
+                            <a href="/admin/type/list">分类列表</a>
                         </li>
                     </ul>
                 </li>

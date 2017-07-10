@@ -30,6 +30,27 @@
 
 	</resultMap>
 
+	<!--条件查询文章-->
+	<select id="loadArticle" resultType="article" parameterType="map">
+		select *
+		from blog_article
+		where 1=1
+		<if test="categoryId != null and categoryId != ''">
+			and category_Id = #{categoryId}
+		</if>
+		<if test="tags != null and tags != ''">
+			and article.id in (select DISTINCT article_Id from articletag where articletag.tagId in
+			<foreach collection="tags" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+			)
+		</if>
+		<if test="title != null and title != ''">
+			and title like concat('%',#{title},'%')
+		</if>
+		order by create_time desc limit #{pager.start},#{pager.limit}
+	</select>
+
 	<!--获取所有的文章-->
 	<select id="getArticleCount" resultType="int">
 		select count(article_id) from blog_article where status = 1

@@ -4,8 +4,7 @@
 
 <body>
     <div id="wrapper">
-        <nav class="navbar-default navbar-static-side" role="navigation" th:insert="~{admin/partial/sidebar :: sidebar}">
-        </nav>
+        <nav class="navbar-default navbar-static-side" role="navigation" th:insert="~{admin/partial/sidebar :: sidebar}" />
 
         <div id="page-wrapper" class="gray-bg dashbard-1">
             <div class="row wrapper border-bottom white-bg page-heading">
@@ -27,87 +26,89 @@
 
                 </div>
             </div>
-            <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-content">
-                                <div class="row">
-                                    <div class="col-sm-2 m-b-xs">
-                                        <select data-placeholder="请选择分类" class="chosen-select" style="width:200px;" id="categoryId" name="categoryId">
-                                            <option value="">请选择分类</option>
-                                            <option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.categoryName}"></option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-5 m-b-xs">
-                                        <select data-placeholder="请选择标签" name="tagId" id="tagId" class="chosen-select" multiple style="width:430px;" tabindex="5">
-                                            <option hassubinfo="true" th:each="tag : ${tagList}" th:text="${tag.tagName}" th:value="${tag.id}"></option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="input-group m-b-xs">
-                                            <input type="text" id="keyword" placeholder="请输入标题"
-                                                   class="input-sm form-control" style="font-size: 12px;">
-                                            <span class="input-group-btn">
-                                                            <button id="article-search" type="button" class="btn btn-sm btn-primary">搜索</button>
-                                                        </span>
-                                        </div>
-                                    </div>
 
-                                    <button id="article-add" type="button" class="btn btn-sm btn-danger m-b-xs">新增文章</button>
-                                </div>
+            <!--<div class="wrapper wrapper-content animated fadeInRight">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-lg-12">-->
+                        <!--<div class="ibox float-e-margins">-->
+                            <!--<div class="ibox-content">-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-sm-2 m-b-xs">-->
+                                        <!--&lt;!&ndash;<select data-placeholder="请选择分类" class="chosen-select" style="width:200px;" id="categoryId" name="categoryId">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<option value="">请选择分类</option>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.categoryName}"></option>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                                    <!--</div>-->
+                                    <!--<div class="col-sm-5 m-b-xs">-->
+                                        <!--&lt;!&ndash;<select data-placeholder="请选择标签" name="tagId" id="tagId" class="chosen-select" multiple style="width:430px;" tabindex="5">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<option hassubinfo="true" th:each="tag : ${tagList}" th:text="${tag.tagName}" th:value="${tag.id}"></option>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                                    <!--</div>-->
+                                    <!--<div class="col-sm-3">-->
+                                        <!--<div class="input-group m-b-xs">-->
+                                            <!--<input type="text" id="keyword" placeholder="请输入标题"-->
+                                                   <!--class="input-sm form-control" style="font-size: 12px;">-->
+                                            <!--<span class="input-group-btn">-->
+                                                            <!--<button id="article-search" type="button" class="btn btn-sm btn-primary">搜索</button>-->
+                                                        <!--</span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
 
-                                <div id="dataList">
+                                    <!--<button id="article-add" type="button" class="btn btn-sm btn-danger m-b-xs">新增文章</button>-->
+                                <!--</div>-->
 
-                                </div>
-                                <div>
-                                    <div style="float: left" class="pagination">共
-                                        <span id="total-num"></span>
-                                        条记录
-                                        <span id="current-page"></span>
-                                        /
-                                        <span id="total-page"></span>
-                                    </div>
+                                <!--&lt;!&ndash;<div id="dataList">&ndash;&gt;-->
+
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--<div>-->
+                                    <!--&lt;!&ndash;<div style="float: left" class="pagination">共&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<span id="total-num"></span>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;条记录&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<span id="current-page"></span>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;/&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<span id="total-page"></span>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
 
-                                    <div id="pagination" class="pagination" style="float: right">
+                                    <!--&lt;!&ndash;<div id="pagination" class="pagination" style="float: right">&ndash;&gt;-->
 
-                                    </div>               <!--      <nav id="page-nav">
-                                    <div class="M-box"></div>
-                                    <p class="tips">当前是第<span id="now" class="now"></span>页</p>
-                                    &lt;!&ndash;<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
-                                    &ndash;&gt;
-                                </nav>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;      <nav id="page-nav">-->
+                                    <!--<div class="M-box"></div>-->
+                                    <!--<p class="tips">当前是第<span id="now" class="now"></span>页</p>-->
+                                    <!--&lt;!&ndash;<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>-->
+                                    <!--&ndash;&gt;-->
+                                    <!--</nav>&ndash;&gt;-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
 
         </div>
+
         <!--添加footer-->
-        <div class="footer fixed" th:insert="~{admin/partial/footer :: copyright}">
+        <div class="footer fixed" th:insert="~{admin/partial/footer :: copyright}" />
 
-        </div>
-    </div>
 
-    </div>
-
-    <!-- 编辑页面 -->
-    <div class="modal inmodal" id="editArticleModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div id="editArticleContent" class="modal-body">
-
-            </div>
-        </div>
     </div>
 
 
-    <!-- 修改用户信息 -->
-    <div class="modal inmodal" id="addArticleModal" tabindex="-1" role="dialog" aria-hidden="true" th:replace="admin/partial/module-userinfo :: update-modal"></div>
+    <!--&lt;!&ndash; 编辑页面 &ndash;&gt;-->
+    <!--<div class="modal inmodal" id="editArticleModal" tabindex="-1" role="dialog" aria-hidden="true">-->
+        <!--<div class="modal-dialog">-->
+            <!--<div id="editArticleContent" class="modal-body">-->
 
-    <div class="container" id="crop-avatar" th:replace="~{admin/partial/avatar :: avatar}"></div>
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <!--&lt;!&ndash; 修改用户信息 &ndash;&gt;-->
+    <!--<div class="modal inmodal" id="addArticleModal" tabindex="-1" role="dialog" aria-hidden="true" th:replace="admin/partial/module-userinfo :: update-modal"></div>-->
+
+    <!--<div class="container" id="crop-avatar" th:replace="~{admin/partial/avatar :: avatar}"></div>-->
 
     <!-- Mainly scripts -->
     <script src="/js/jquery.min.js"></script>

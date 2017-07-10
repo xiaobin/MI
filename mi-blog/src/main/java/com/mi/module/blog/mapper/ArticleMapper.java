@@ -23,4 +23,6 @@ public interface ArticleMapper extends BaseMapper<Article> {
     List<Article> selectArticleListByKeywords(Map map);
 
     List<ArticleCustom> selectArticleList(Pager<Article> pager);
+
+    List<Article> loadArticle(Map<String, Object> param);
 }

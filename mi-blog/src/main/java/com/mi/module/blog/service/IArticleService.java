@@ -30,7 +30,7 @@ public interface IArticleService extends IService<Article> {
 
     /**
      * 关键字查询文章
-     * @param keyword 关键字
+     * @param map｛keymap｝ 关键字
      * @return
      */
     List<Article> selectArticleListByKeywords(Map map);
@@ -41,4 +41,11 @@ public interface IArticleService extends IService<Article> {
      * @return
      */
     List<ArticleCustom> selectArticleList(Pager<Article> pager);
+
+    /**
+     * 条件查询文章
+     * @param param
+     * @return
+     */
+    List<Article> loadArticle(Map<String, Object> param);
 }
