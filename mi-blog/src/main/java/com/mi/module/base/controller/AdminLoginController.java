@@ -1,4 +1,4 @@
-package com.mi.module.admin.controller;
+package com.mi.module.base.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

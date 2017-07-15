@@ -16,4 +16,12 @@
 	<select id="selectAllList" resultMap="BaseResultMap" >
 		select * from blog_friendlink
 	</select>
+
+	<select id="loadList" resultMap="BaseResultMap">
+
+		select * from blog_friendlink
+		limit #{pager.start},#{pager.limit}
+
+	</select>
+
 </mapper>

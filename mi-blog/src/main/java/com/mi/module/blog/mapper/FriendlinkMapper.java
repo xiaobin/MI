@@ -1,7 +1,9 @@
 package com.mi.module.blog.mapper;
 
+import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Friendlink;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,4 +18,6 @@ import java.util.List;
 public interface FriendlinkMapper extends BaseMapper<Friendlink> {
 
     List<Friendlink> selectAllList();
+
+    List<Friendlink> loadList(@Param("pager")Pager pager, @Param("param") String param);
 }

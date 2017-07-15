@@ -31,6 +31,10 @@ public class User extends Model<User> {
      */
     @TableId("user_id")
 	private String userId;
+
+	@TableField("info_Id")
+    private String infoId;
+
     /**
      * 登录名
      */
@@ -63,6 +67,14 @@ public class User extends Model<User> {
 	@TableField("create_time")
 	private Date createTime;
 
+
+	public String getInfoId() {
+		return infoId;
+	}
+
+	public void setInfoId(String infoId) {
+		this.infoId = infoId;
+	}
 
 	public String getUserId() {
 		return userId;

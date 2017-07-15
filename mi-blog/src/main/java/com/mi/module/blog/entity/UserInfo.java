@@ -25,11 +25,6 @@ public class UserInfo extends Model<UserInfo> {
     @TableId("info_id")
 	private String infoId;
     /**
-     * 用户ID
-     */
-	@TableField("user_id")
-	private String userId;
-    /**
      * 头像地址
      */
 	@TableField("avatar_url")
@@ -76,14 +71,6 @@ public class UserInfo extends Model<UserInfo> {
 
 	public void setInfoId(String infoId) {
 		this.infoId = infoId;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 	public String getAvatarUrl() {

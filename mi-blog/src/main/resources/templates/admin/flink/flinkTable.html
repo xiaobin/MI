@@ -13,13 +13,13 @@
     </thead>
     <tbody>
 
-    <tr class="gradeX" th:each="partner : ${partnerList}">
-        <td th:text="${partner.id}"></td>
-        <td th:text="${partner.siteName}"></td>
-        <td><a th:href="${partner.siteUrl}" th:text="${partner.siteUrl}" target="_blank" rel="noreferrer" style="cursor:help;display:inline !important;"></a></td>
-        <td th:text="${partner.siteDesc}"></td>
-        <td th:text="${partner.sort}"></td>
-        <td th:data-id="${partner.id}">
+    <tr class="gradeX" th:each="flink : ${flinkList}">
+        <td th:text="${flink.flinkId}"></td>
+        <td th:text="${flink.siteName}"></td>
+        <td><a th:href="${flink.siteUrl}" th:text="${flink.siteUrl}" target="_blank" rel="noreferrer" style="cursor:help;display:inline !important;"></a></td>
+        <td th:text="${flink.siteDesc}"></td>
+        <td th:text="${flink.sort}"></td>
+        <td th:data-id="${flink.flinkId}">
             <button  type="button" class="btn btn-primary btn-xs partner-edit" title="编辑">
                 编辑
             </button>

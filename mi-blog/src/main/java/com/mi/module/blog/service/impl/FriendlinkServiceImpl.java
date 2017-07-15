@@ -1,5 +1,8 @@
 package com.mi.module.blog.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.mi.data.vo.Pager;
+import com.mi.module.blog.entity.Article;
 import com.mi.module.blog.entity.Friendlink;
 import com.mi.module.blog.mapper.FriendlinkMapper;
 import com.mi.module.blog.service.IFriendlinkService;
@@ -26,5 +29,18 @@ public class FriendlinkServiceImpl extends ServiceImpl<FriendlinkMapper, Friendl
     @Override
     public List<Friendlink> selectAllList() {
         return friendlinkMapper.selectAllList();
+    }
+
+    @Override
+    public void initPage(Pager pager) {
+        EntityWrapper<Friendlink> ew = new EntityWrapper<>();
+        int count = friendlinkMapper.selectCount(ew);
+        pager.setTotalCount(count);
+    }
+
+    @Override
+    public List<Friendlink> loadList(Pager pager, String param) {
+        pager.setStart(pager.getStart());
+        return friendlinkMapper.loadList(pager,param);
     }
 }

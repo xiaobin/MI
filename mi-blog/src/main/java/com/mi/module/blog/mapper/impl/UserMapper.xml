@@ -5,6 +5,7 @@
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.mi.module.blog.entity.User">
 		<id column="user_id" property="userId" />
+		<result column="info_id" property="infoId" />
 		<result column="user_name" property="userName" />
 		<result column="user_pwd" property="userPwd" />
 		<result column="enabled" property="enabled" />

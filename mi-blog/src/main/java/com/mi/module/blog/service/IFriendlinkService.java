@@ -1,5 +1,6 @@
 package com.mi.module.blog.service;
 
+import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Friendlink;
 import com.baomidou.mybatisplus.service.IService;
 
@@ -17,4 +18,8 @@ public interface IFriendlinkService extends IService<Friendlink> {
 
     /** 获取所有友情链接 **/
     List<Friendlink> selectAllList();
+
+    void initPage(Pager pager);
+
+    List<Friendlink> loadList(Pager pager,String param);
 }

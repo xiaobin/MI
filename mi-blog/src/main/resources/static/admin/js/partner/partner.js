@@ -7,7 +7,7 @@ $(function() {
         page = 1;
     }
     $.ajax({
-        url: '/admin/partner/initPage',
+        url: '/admin/flink/initPage',
         data: 'page=' + page,
         success: function (data) {
             $("#total-num").text(data.totalCount);
@@ -53,7 +53,7 @@ function loadPartnerList() {
 
     // 查询列表
     $.ajax({
-        url: '/admin/partner/load',
+        url: '/admin/flink/load',
         data: 'page=' + page+"&param="+param,
         success: function (data) {
             $("#dataList").html(data);
@@ -77,7 +77,7 @@ $("#dataList").on('click','.partner-delete',function () {
             primary: {
                 text: '确定', style: 'primary', action: function () {
                     $.ajax({
-                        url: '/admin/partner/delete/' + $(this).parent().data("id"),
+                        url: '/admin/flink/delete/' + $(this).parent().data("id"),
                         method: "GET",
                         success: function (data) {
                             if (data.resultCode == 'success') {
@@ -102,7 +102,7 @@ $("#dataList").on('click','.partner-delete',function () {
 // 跳转栏目编辑页
 $("#dataList").on('click','.partner-edit',function () {
     $.ajax({
-        url: '/admin/partner/editJump/'+$(this).parent().data("id"),
+        url: '/admin/flink/editJump/'+$(this).parent().data("id"),
         method: "GET",
         success: function (data) {
             $('#editPartnerContent').html(data);
@@ -117,7 +117,7 @@ $("#dataList").on('click','.partner-edit',function () {
 // 跳转新增页面
 $("#partner-add").on("click",function () {
     $.ajax({
-        url: '/admin/partner/addJump',
+        url: '/admin/flink/addJump',
         success: function (data) {
             $('#addPartnerContent').html(data);
             $('#addPartnerModal').modal('show');

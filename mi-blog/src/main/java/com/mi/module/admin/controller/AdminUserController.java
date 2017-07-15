@@ -1,4 +1,4 @@
-package com.mi.module.base.controller;
+package com.mi.module.admin.controller;
 
 import com.mi.common.model.BaseResult;
 import com.mi.common.model.ReturnCode;
