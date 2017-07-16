@@ -1,23 +1,23 @@
-function saveEditPartner(){
-	if(validateEditPartner()){
+function saveEdit(){
+	if(validateEdit()){
 		$.ajax({
-	        url : '/admin/partner/update',
-	        data : encodeURI($("#editForm").serialize()),
+	        url : '/admin/flink/update',
+	        data : $("#editForm").serialize(),
 	        success  : function(data) {
-	        	if(data.resultCode == 'success'){
-	        		$('#editPartnerModal').modal('hide');
-	            	loadPartnerList();
+	        	if(data.code == '200'){
+	        		$('#editModal').modal('hide');
+	            	loadList();
                     closeEditWindow();
-	            	autoCloseAlert(data.errorInfo,1000);
+	            	autoCloseAlert(data.msg,1000);
 	        	}else{
-	        		autoCloseAlert(data.errorInfo,1000);
+	        		autoCloseAlert(data.msg,1000);
 	        	}
 			}
 	    });
 	}
 }
 
-function validateEditPartner(){
+function validateEdit(){
 	var siteName = $("#siteName").val();
 	if(!isEmpty(siteName)){
 		if(isSpecialSymbols(siteName)){
@@ -52,5 +52,5 @@ function validateEditPartner(){
 
 //关闭编辑窗口
 function closeEditWindow(){
-	$('#editPartnerModal').modal('hide');
+	$('#editModal').modal('hide');
 }

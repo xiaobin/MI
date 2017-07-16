@@ -34,13 +34,13 @@
                                 <form class="form-inline">
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <input type="text" id="keyword" placeholder="请输入合作伙伴名称" class="input-sm form-control">
+                                            <input type="text" id="keyword" placeholder="请输入名称" class="input-sm form-control">
                                             <span class="input-group-btn">
-		                                        		<button id="partner-search" type="button" class="btn btn-sm btn-primary">搜索</button>
-		                                        	</span>
+		                                        		<button id="search" type="button" class="btn btn-sm btn-primary">搜索</button>
+                                            </span>
                                         </div>
                                     </div>
-                                    <button id="partner-add" type="button" class="btn btn-sm btn-danger">添加友链</button>
+                                    <button id="add" type="button" class="btn btn-sm btn-danger">添加友链</button>
                                 </form>
                             </div>
 
@@ -60,12 +60,6 @@
 
                                 </div>
 
-                                <!--      <nav id="page-nav">
-                                <div class="M-box"></div>
-                                <p class="tips">当前是第<span id="now" class="now"></span>页</p>
-                                <!--<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
-                                -->
-
                             </div>
                     </div>
                 </div>
@@ -83,23 +77,25 @@
 
 </div>
 
-<!--&lt;!&ndash; 编辑页面 &ndash;&gt;-->
-<!--<div class="modal inmodal" id="editPartnerModal" tabindex="-1" role="dialog" aria-hidden="true">-->
-    <!--<div class="modal-dialog">-->
-        <!--<div id="editPartnerContent" class="modal-body">-->
+<!-- 新增页面 -->
+<div class="modal inmodal" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="addContent" class="modal-body">
 
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
+        </div>
+    </div>
+</div>
 
-<!--&lt;!&ndash; 新增页面 &ndash;&gt;-->
-<!--<div class="modal inmodal" id="addPartnerModal" tabindex="-1" role="dialog" aria-hidden="true">-->
-    <!--<div class="modal-dialog">-->
-        <!--<div id="addPartnerContent" class="modal-body">-->
+<!-- 编辑页面 -->
+<div class="modal inmodal" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="editContent" class="modal-body">
 
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
+        </div>
+    </div>
+</div>
+
+
 
 <!--&lt;!&ndash; 修改用户信息 &ndash;&gt;-->
 <!--<div class="modal inmodal" id="addArticleModal" tabindex="-1" role="dialog" aria-hidden="true" th:replace="admin/partial/module-userinfo :: update-modal"></div>-->
@@ -114,17 +110,20 @@
 <script src="/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="/admin/js/hplus.js"></script>
-<script src="/admin/js/partner/partner.js"></script>
-<script src="/admin/js/partner/edit_partner.js"></script>
-<script src="/admin/js/partner/add_partner.js"></script>
+
 <script src="/admin/js/validation.js"></script>
 <script src="/js/jqPaginator.min.js"></script>
 <script type="text/javascript" src="/admin/js/flavr/flavr/js/flavr.min.js"></script>
 <script type="text/javascript" src="/admin/js/flavr/base.js"></script>
-
-<script src="/admin/js/userinfo.js"></script>
 <script src="/admin/js/cropper.min.js"></script>
 <script src="/admin/js/upload-image.js"></script>
+
+<script src="/admin/js/flink/flink.js"></script>
+<script src="/admin/js/flink/edit_flink.js"></script>
+<script src="/admin/js/flink/add_flink.js"></script>
+
+<script src="/admin/js/userinfo.js"></script>
+
 
 </body>
 

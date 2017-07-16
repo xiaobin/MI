@@ -20,6 +20,9 @@
 	<select id="loadList" resultMap="BaseResultMap">
 
 		select * from blog_friendlink
+		<if test="param!=null">
+			where site_name like concat('%',#{param},'%')
+		</if>
 		limit #{pager.start},#{pager.limit}
 
 	</select>

@@ -1,7 +1,7 @@
 $(function() {
-    $("#partner-manage-li").addClass("active");
-    $("#partner-list-li").addClass("active");
-    $("#partner-list-li").parent().addClass("in");
+    $("#flink-manage-li").addClass("active");
+    $("#flink-list-li").addClass("active");
+    $("#flink-list-li").parent().addClass("in");
     var page = $("#current-page").val();
     if (page == null || page == 0) {
         page = 1;
@@ -25,32 +25,30 @@ $(function() {
                     page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
                     onPageChange: function (num, type) {
                         $("#current-page").text(num);
-                        loadPartnerList();
+                        loadList();
                     }
                 });
             }else {
-                loadPartnerList();
+                loadList();
             }
         }
     });
 });
 
-
 // 跳转分页
 function toPage(page) {
     $("#page").val(page);
-    loadPartnerList();
+    loadList();
 }
 
 // 加载菜单列表
-function loadPartnerList() {
+function loadList() {
     var param = $("#keyword").val();
     // 收集参数
     var page = $("#now").val();
     if (isEmpty(page) || page == 0) {
         page = 1;
     }
-
     // 查询列表
     $.ajax({
         url: '/admin/flink/load',
@@ -61,30 +59,30 @@ function loadPartnerList() {
     });
 
 }
-
-
 // 搜索
-$("#partner-search").on('click',function () {
-    loadPartnerList();
-
+$("#search").on('click',function () {
+    loadList();
 });
 
 // 删除栏目
-$("#dataList").on('click','.partner-delete',function () {
+$("#dataList").on('click','.delete',function () {
+    var id = $(this).parent().data("id")
+
     new $.flavr({
         content: '确定要删除吗?',
         buttons: {
             primary: {
                 text: '确定', style: 'primary', action: function () {
+
                     $.ajax({
-                        url: '/admin/flink/delete/' + $(this).parent().data("id"),
-                        method: "GET",
+                        url: '/admin/flink/delete',
+                        data: 'id='+id,
                         success: function (data) {
-                            if (data.resultCode == 'success') {
-                                autoCloseAlert(data.errorInfo, 1000);
-                                loadPartnerList();
+                            if (data.code == '200') {
+                                autoCloseAlert(data.msg, 1000);
+                                loadList();
                             } else {
-                                autoCloseAlert(data.errorInfo, 1000);
+                                autoCloseAlert(data.msg, 1000);
                             }
                         }
                     });
@@ -100,29 +98,29 @@ $("#dataList").on('click','.partner-delete',function () {
 });
 
 // 跳转栏目编辑页
-$("#dataList").on('click','.partner-edit',function () {
+$("#dataList").on('click','.edit',function () {
+    var id = $(this).parent().data("id")
     $.ajax({
-        url: '/admin/flink/editJump/'+$(this).parent().data("id"),
-        method: "GET",
+        url: '/admin/flink/editJump',
+        data: 'id='+id,
         success: function (data) {
-            $('#editPartnerContent').html(data);
-            $('#editPartnerModal').modal('show');
-            $('#editPartnerModal').addClass('animated');
-            $('#editPartnerModal').addClass('flipInY');
+            $('#editContent').html(data);
+            $('#editModal').modal('show');
+            $('#editModal').addClass('animated');
+            $('#editModal').addClass('flipInY');
         }
     });
 });
 
-
 // 跳转新增页面
-$("#partner-add").on("click",function () {
+$("#add").on("click",function () {
     $.ajax({
         url: '/admin/flink/addJump',
         success: function (data) {
-            $('#addPartnerContent').html(data);
-            $('#addPartnerModal').modal('show');
-            $('#addPartnerModal').addClass('animated');
-            $('#addPartnerModal').addClass('bounceInLeft');
+            $('#addContent').html(data);
+            $('#addModal').modal('show');
+            $('#addModal').addClass('animated');
+            $('#addModal').addClass('bounceInLeft');
         }
     });
 });

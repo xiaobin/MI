@@ -11526,7 +11526,7 @@
 	
 	
 		/**
-		 * This property is the rendering partner to `data` and it is suggested that
+		 * This property is the rendering flink to `data` and it is suggested that
 		 * when you want to manipulate data for display (including filtering,
 		 * sorting etc) without altering the underlying data for the table, use this
 		 * property. `render` can be considered to be the the read only companion to
