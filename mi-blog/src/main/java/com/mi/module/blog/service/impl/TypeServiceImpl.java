@@ -1,10 +1,15 @@
 package com.mi.module.blog.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Type;
 import com.mi.module.blog.mapper.TypeMapper;
 import com.mi.module.blog.service.ITypeService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 
@@ -16,5 +21,29 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type> implements ITypeService {
-	
+
+    @Resource
+    private TypeMapper typeMapper;
+
+    @Override
+    public void initPage(Pager pager) {
+        EntityWrapper<Type> ew = new EntityWrapper<>();
+        int count = typeMapper.selectCount(ew);
+        pager.setTotalCount(count);
+    }
+
+    @Override
+    public List<Type> load(Pager pager, String param) {
+        pager.setStart(pager.getStart());
+        return typeMapper.load(pager,param);
+    }
+
+    @Override
+    public boolean checkExist(Type type) {
+        int count = typeMapper.checkExist(type);
+        if (count > 0){
+            return true;
+        }
+        return false;
+    }
 }

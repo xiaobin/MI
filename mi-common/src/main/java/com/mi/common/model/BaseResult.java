@@ -35,6 +35,12 @@ public class BaseResult {
         this.msg = rc.getName();
     }
 
+    public BaseResult(Object obj,ReturnCode rc,String msg){
+        super();
+        this.data = obj;
+        this.code = rc.getCode();
+        this.msg = msg;
+    }
 
 
 

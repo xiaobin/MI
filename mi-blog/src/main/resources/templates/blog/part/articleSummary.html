@@ -28,7 +28,7 @@
 
                 <div class="article-category" style="text-transform: none;" th:each="type : ${article.typeList}" >
                     <i class="fa fa-folder"></i>
-                    <!--th:href="'/category/details/'+${articleList.categoryId}"-->
+                    <!--th:hreftypegory/details/'+${articleList.categoryId}"-->
                     <a class="article-category-link" href="javascript:void(0);" th:data-id="${type.typeId}" th:text="${type.typeName}" style="cursor: pointer"></a>
                 </div>
 

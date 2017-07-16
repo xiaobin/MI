@@ -1,12 +1,12 @@
 $(function(){
-    $("#category-manage-li").addClass("active");
-    $("#category-list-li").addClass("active");
+    $("#type-manage-li").addClass("active");
+    $("#type-list-li").addClass("active");
     var page = $("#current-page").val();
     if (page==null || page ==0 ){
         page = 1;
     }
     $.ajax({
-        url : '/admin/category/initPage',
+        url : '/admin/type/initPage',
         data : 'page='+page,
         success  : function(data) {
             $("#total-num").text(data.totalCount);
@@ -23,11 +23,11 @@ $(function(){
                     onPageChange: function (num, type) {
                         // 加载分类列表
                         $("#current-page").text(num);
-                        loadCategoryList();
+                        loadList();
                     }
                 });
             }else {
-                loadCategoryList();
+                loadList();
             }
         }
     });
@@ -39,22 +39,21 @@ $(function(){
 // 跳转分页
 function toPage(page){
     $("#page").val(page);
-    loadCategoryList();
+    loadList();
 }
 
 // 加载分类列表
-function loadCategoryList(){
+function loadList(){
     // 收集参数
     var keyword = $("#keyword").val();
     var page = $("#current-page").text();
     if(isEmpty(page) || page == 0){
         page = 1;
     }
-
     // 查询列表
     $.ajax({
-        url : '/admin/category/load',
-        data : 'page='+page+"&categoryName="+keyword,
+        url : '/admin/type/load',
+        data : 'page='+page+"&param="+keyword,
         success  : function(data) {
             $("#dataList").html(data);
         }
@@ -62,26 +61,25 @@ function loadCategoryList(){
 
 }
 
-
 // 搜索
-$("#category-search").on("click",function () {
-    loadCategoryList();
+$("#search").on("click",function () {
+    loadList();
 });
 //绑定删除分类的点击事件
-$("#dataList").on('click','.category-delete',function () {
-    var categoryId = $(this).parent().data("id");
+$("#dataList").on('click','.delete',function () {
+    var typeId = $(this).parent().data("id");
     $.ajax({
-        url:"/admin/category/query/"+categoryId,
-        method: "GET",
+        url:"/admin/type/delCheckExist",
+        data : 'typeId='+typeId,
         success : function (data) {
-            if (data.resultCode == 'fail'){
+            if (data.code == '400'){
                 new $.flavr({
                     content: '删除分类将会将此分类的文章移除此分类，您确定要删除吗?',
 
                     buttons: {
                         primary: {
                             text: '确定', style: 'primary', action: function () {
-                                deleteCategory(categoryId);
+                                deleteById(typeId);
                             }
                         },
                         success: {
@@ -92,37 +90,39 @@ $("#dataList").on('click','.category-delete',function () {
                     }
                 });
             }else {
-                deleteCategory(categoryId);
+                deleteById(typeId);
             }
         }
 
     });
 })
+
 // 删除分类的ajax方法
-function deleteCategory(id){
+function deleteById(id){
     $.ajax({
-        url: "/admin/category/delete/"+id,
+        url: "/admin/type/delete",
+        data: 'typeId='+id,
         success : function (data) {
-            if(data.resultCode == 'success'){
-                window.href.location = "/admin/category/list";
-                autoCloseAlert(data.errorInfo,1000);
+            if(data.code == '200'){
+                loadList();
+                autoCloseAlert(data.msg,1000);
             }else{
-                autoCloseAlert(data.errorInfo,1000);
+                autoCloseAlert(data.msg,1000);
             }
         }
     });
 }
 
 // 跳转编辑页
-$("#dataList").on('click','.category-edit',function () {
+$("#dataList").on('click','.edit',function () {
     $.ajax({
-        url : '/admin/category/editJump/'+$(this).parent().data("id"),
-        method:"GET",
+        url : '/admin/type/editJump',
+        data: 'typeId='+$(this).parent().data("id"),
         success  : function(data) {
-            $('#editCategoryContent').html(data);
-            $('#editCategoryModal').modal('show');
-            $('#editCategoryModal').addClass('animated');
-            $('#editCategoryModal').addClass('flipInY');
+            $('#editContent').html(data);
+            $('#editModal').modal('show');
+            $('#editModal').addClass('animated');
+            $('#editModal').addClass('flipInY');
         }
     });
 });
@@ -130,29 +130,29 @@ $("#dataList").on('click','.category-edit',function () {
 
 // 关闭编辑分类窗口
 function closeEditWindow(){
-    $('#editCategoryModal').modal('hide');
+    $('#editModal').modal('hide');
 }
 
 // 关闭新增分类窗口
 function closeAddWindow(){
-    $('#addCategoryModal').modal('hide');
+    $('#addModal').modal('hide');
 }
 
 
 // 编辑分类
-function saveEditCategory(){
-    if(validateEditCategory()){
+function saveEdit(){
+    if(validateEdit()){
         $.ajax({
-            url : '/admin/category/update',
-            data : encodeURI($("#editForm").serialize()),
+            url : '/admin/type/update',
+            data : $("#editForm").serialize(),
             success  : function(data) {
-                if(data.resultCode == 'success'){
-                    $('#editCategoryModal').modal('hide');
+                if(data.code == '200'){
+                    $('#editModal').modal('hide');
                     closeEditWindow();
-                    autoCloseAlert(data.errorInfo,1000);
-                    window.location.href = "/admin/category/list";
+                    autoCloseAlert(data.msg,1000);
+                    loadList();
                 }else{
-                    autoCloseAlert(data.errorInfo,1000);
+                    autoCloseAlert(data.msg,1000);
                 }
             }
         });
@@ -160,19 +160,19 @@ function saveEditCategory(){
 }
 
 // 保存分类
-function saveAddCategory(){
-    if(validateAddCategory()){
+function saveAdd(){
+    if(validateAdd()){
         $.ajax({
-            url : '/admin/category/save',
-            data : encodeURI($("#addForm").serialize()),
+            url : '/admin/type/save',
+            data : $("#addForm").serialize(),
             success  : function(data) {
-                if(data.resultCode == 'success'){
-                    $('#addCategoryModal').modal('hide');
-                    loadCategoryList();
+                if(data.code == '200'){
+                    $('#addModal').modal('hide');
+                    loadList();
                     closeAddWindow();
-                    autoCloseAlert(data.errorInfo,1000);
+                    autoCloseAlert(data.msg,1000);
                 }else{
-                    autoCloseAlert(data.errorInfo,1000);
+                    autoCloseAlert(data.msg,1000);
                 }
             }
         });
@@ -180,11 +180,11 @@ function saveAddCategory(){
 }
 
 // 校验新增分类输入框
-function validateAddCategory(){
-    var categoryName = $("#categoryName").val();
+function validateAdd(){
+    var typeName = $("#typeName").val();
     var aliasName = $("#aliasName").val();
-    if(!isEmpty(categoryName)){
-        if(isSpecialSymbols(categoryName)){
+    if(!isEmpty(typeName)){
+        if(isSpecialSymbols(typeName)){
             autoCloseAlert("分类名称不能包含特殊符号",1000);
             return false;
         }
@@ -205,11 +205,11 @@ function validateAddCategory(){
 }
 
 // 校验编辑分类输入框
-function validateEditCategory(){
-    var CategoryName = $("#categoryName").val();
+function validateEdit(){
+    var typeName = $("#typeName").val();
     var aliasName = $("#aliasName").val();
-    if(!isEmpty(CategoryName)){
-        if(isSpecialSymbols(CategoryName)){
+    if(!isEmpty(typeName)){
+        if(isSpecialSymbols(typeName)){
             autoCloseAlert("标签不能包含特殊符号",1000);
             return false;
         }
@@ -231,14 +231,14 @@ function validateEditCategory(){
 }
 
 // 跳转新增分类页面
-$("#category-add").on("click",function () {
+$("#add").on("click",function () {
     $.ajax({
-        url : '/admin/category/addJump',
+        url : '/admin/type/addJump',
         success  : function(data) {
-            $('#addCategoryContent').html(data);
-            $('#addCategoryModal').modal('show');
-            $('#addCategoryModal').addClass('animated');
-            $('#addCategoryModal').addClass('bounceInLeft');
+            $('#addContent').html(data);
+            $('#addModal').modal('show');
+            $('#addModal').addClass('animated');
+            $('#addModal').addClass('bounceInLeft');
         }
     });
 });

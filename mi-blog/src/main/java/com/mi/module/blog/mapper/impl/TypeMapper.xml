@@ -12,4 +12,20 @@
 		<result column="update_time" property="updateTime" />
 	</resultMap>
 
+	<select id="load" resultMap="BaseResultMap">
+		select * from blog_type
+		<if test="param != null and param != '' ">
+			WHERE type_name like concat('%',#{param},'%') or alias_name like concat('%',#{param},'%')
+		</if>
+		limit #{pager.start},#{pager.limit}
+	</select>
+
+	<select id="checkExist" resultType="int">
+		select count(type_id) from blog_type  where (type_name=#{typeName} or alias_name = #{aliasName})
+		<if test="typeId != null and typeId != ''">
+			and type_id != #{typeId}
+		</if>
+	</select>
+
+
 </mapper>

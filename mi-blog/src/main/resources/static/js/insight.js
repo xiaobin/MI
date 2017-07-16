@@ -73,7 +73,7 @@
     }
 
     /**
-     * Judge if a given post/page/category/tag contains all of the keywords.
+     * Judge if a given post/page/type/tag contains all of the keywords.
      * @param Object            obj     Object to be weighted
      * @param Array<String>     fields  Object's fields to find matches
      */
@@ -112,7 +112,7 @@
     }
 
     /**
-     * Calculate the weight of a matched post/page/category/tag.
+     * Calculate the weight of a matched post/page/type/tag.
      * @param Object            obj     Object to be weighted
      * @param Array<String>     fields  Object's fields to find matches
      * @param Array<Integer>    weights Weight of every field

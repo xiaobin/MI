@@ -73,13 +73,13 @@ $(".archive-list-link").on('click',function () {
     window.location.href = '/createTime/details/'+createTime;
 })
 /*文章分类点击事件*/
-$(".category-list-link").on('click',function () {
+$(".type-list-link").on('click',function () {
     var categoryId = $(this).data("id");
     window.location.href = '/categories/details/'+categoryId;
 })
 
 /*为动态元素绑定lick事件*/
-$("#main-article").on('click','.article-category-link',function () {
+$("#main-article").on('click','.article-type-link',function () {
     var categoryId = $(this).data("id");
     window.location.href = '/categories/details/'+categoryId;
 })

@@ -1,7 +1,10 @@
 package com.mi.module.blog.service;
 
+import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Type;
 import com.baomidou.mybatisplus.service.IService;
+
+import java.util.List;
 
 /**
  *
@@ -12,5 +15,10 @@ import com.baomidou.mybatisplus.service.IService;
  *         Created by 2017-07-09.
  */
 public interface ITypeService extends IService<Type> {
-	
+
+    void initPage(Pager pager);
+
+    List<Type> load(Pager pager, String param);
+
+    boolean checkExist(Type type);
 }

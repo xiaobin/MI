@@ -12,16 +12,16 @@
     </thead>
     <tbody>
 
-    <tr class="gradeX" th:each="category : ${categoryList}">
-        <td th:text="${category.id}"></td>
-        <td th:text="${category.categoryName}"></td>
-        <td th:text="${category.aliasName}"></td>
-        <td th:text="${category.sort}"></td>
-        <td th:data-id="${category.id}">
-            <button  type="button" class="btn btn-primary btn-xs category-edit" title="编辑">
+    <tr class="gradeX" th:each="type : ${typeList}">
+        <td th:text="${type.typeId}"></td>
+        <td th:text="${type.typeName}"></td>
+        <td th:text="${type.aliasName}"></td>
+        <td th:text="${type.sort}"></td>
+        <td th:data-id="${type.typeId}">
+            <button  type="button" class="btn btn-primary btn-xs edit" title="编辑">
                 编辑
             </button>
-            <button class="btn btn-danger btn-xs category-delete" type="button" title="删除">
+            <button class="btn btn-danger btn-xs delete" type="button" title="删除">
                 删除
             </button>
 
