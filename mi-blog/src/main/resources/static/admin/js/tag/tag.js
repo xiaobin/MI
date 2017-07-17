@@ -24,11 +24,11 @@ $(function() {
                     onPageChange: function (num, type) {
                         // 加载管理员列表
                         $("#current-page").text(num);
-                        loadTagList();
+                        loadList();
                     }
                 });
             }else{
-                loadTagList();
+                loadList();
             }
 
         }
@@ -37,18 +37,17 @@ $(function() {
 
 
 // 加载管理员列表
-function loadTagList(){
+function loadList(){
 	// 收集参数
 	var param = $("#keyword").val();
 	var page = $("#current-page").text();
 	if(isEmpty(page) || page == 0){
 		page = 1;
 	}
-	
 	// 查询列表
 	$.ajax({
         url : '/admin/tag/load',
-        data : 'page='+page+"&tagName="+param,
+        data : 'page='+page+"&param="+param,
         success  : function(data) {
         	$("#dataList").html(data);
 		}
@@ -58,12 +57,12 @@ function loadTagList(){
 
 
 // 搜索
-$("#tag-search").on('click',function () {
-	loadTagList();
+$("#search").on('click',function () {
+	loadList();
 });
 
 // 删除
-$("#dataList").on('click','.tag-delete',function () {
+$("#dataList").on('click','.delete',function () {
     var id = $(this).parent().data("id");
     new $.flavr({
         content: '确定要删除吗?',
@@ -71,14 +70,14 @@ $("#dataList").on('click','.tag-delete',function () {
             primary: {
                 text: '确定', style: 'primary', action: function () {
                     $.ajax({
-                        url : '/admin/tag/delete/'+id,
-                        method: "GET",
+                        url : '/admin/tag/delete',
+                        data: 'typeId=' + id,
                         success  : function(data) {
-                            if(data.resultCode == 'success'){
-                                autoCloseAlert(data.errorInfo,1000);
-                                window.location.href = "/admin/tag/list";
+                            if(data.code == '200'){
+                                autoCloseAlert(data.msg,1000);
+                                loadList();
                             }else{
-                                autoCloseAlert(data.errorInfo,1000);
+                                autoCloseAlert(data.msg,1000);
                             }
                         }
                     });
@@ -95,43 +94,43 @@ $("#dataList").on('click','.tag-delete',function () {
 });
 
 // 跳转编辑页
-$("#dataList").on('click','.tag-edit',function () {
+$("#dataList").on('click','.edit',function () {
 	$.ajax({
-        url : '/admin/tag/editJump/'+$(this).parent().data("id"),
-      	method: "GET",
+        url : '/admin/tag/editJump',
+        data: 'tagId=' + $(this).parent().data("id"),
         success  : function(data) {
-        	$('#editTagContent').html(data);
-        	$('#editTagModal').modal('show');
-        	$('#editTagModal').addClass('animated');
-        	$('#editTagModal').addClass('flipInY');
+        	$('#editContent').html(data);
+        	$('#editModal').modal('show');
+        	$('#editModal').addClass('animated');
+        	$('#editModal').addClass('flipInY');
 		}
     });
 });
 
 // 关闭编辑管理员窗口
 function closeEditWindow(){
-	$('#editTagModal').modal('hide');
+	$('#editModal').modal('hide');
 }
 
 // 关闭新增管理员窗口
 function closeAddWindow(){
-	$('#addTagModal').modal('hide');
+	$('#addModal').modal('hide');
 }
 
 
 // 编辑管理员
-function saveEditTag(){
-	if(validateEditTag()){
+function saveEdit(){
+	if(validateEdit()){
 		$.ajax({
 	        url : '/admin/tag/update',
-	        data : encodeURI($("#editForm").serialize()),
+	        data : $("#editForm").serialize(),
 	        success  : function(data) {
-	        	if(data.resultCode == 'success'){
-	        		$('#editTagModal').modal('hide');
-                    loadTagList();
-                    autoCloseAlert(data.errorInfo,1000);
+	        	if(data.code == '200'){
+	        		$('#editModal').modal('hide');
+                    loadList();
+                    autoCloseAlert(data.msg,1000);
                 }else{
-	        		autoCloseAlert(data.errorInfo,1000);
+	        		autoCloseAlert(data.msg,1000);
 	        	}
 			}
 	    });
@@ -139,17 +138,18 @@ function saveEditTag(){
 }
 
 // 新增管理员
-function saveAddTag(){
-	if(validateAddTag()){
+function saveAdd(){
+	if(validateAdd()){
 		$.ajax({
 	        url : '/admin/tag/save',
-	        data : encodeURI($("#addForm").serialize()),
+	        data : $("#addForm").serialize(),
 	        success  : function(data) {
-	        	if(data.resultCode == 'success'){
-                    autoCloseAlert(data.errorInfo,1000);
-                    window.location.href = "/admin/tag/list";
+	        	if(data.code == '200'){
+                    $('#addModal').modal('hide');
+                    autoCloseAlert(data.msg,1000);
+                    loadList();
 	        	}else{
-	        		autoCloseAlert(data.errorInfo,1000);
+	        		autoCloseAlert(data.msg,1000);
 	        	}
 			}
 	    });
@@ -157,7 +157,7 @@ function saveAddTag(){
 }
 
 // 校验新增管理员输入框
-function validateAddTag(){
+function validateAdd(){
 	var tagName = $("#tagName").val();
 	var aliasName = $("#aliasName").val();
 	if(!isEmpty(tagName)){
@@ -182,7 +182,7 @@ function validateAddTag(){
 }
 
 // 校验编辑管理员输入框
-function validateEditTag(){
+function validateEdit(){
 	var tagName = $("#tagName").val();
 	if(!isEmpty(tagName)){
 		if(isSpecialSymbols(tagName)){
@@ -198,14 +198,14 @@ function validateEditTag(){
 }
 
 // 跳转新增管理员页面
-$("#tag-add").on('click',function () {
+$("#add").on('click',function () {
 	$.ajax({
         url : '/admin/tag/addJump',
         success  : function(data) {
-        	$('#addTagContent').html(data);
-        	$('#addTagModal').modal('show');
-        	$('#addTagModal').addClass('animated');
-        	$('#addTagModal').addClass('bounceInLeft');
+        	$('#addContent').html(data);
+        	$('#addModal').modal('show');
+        	$('#addModal').addClass('animated');
+        	$('#addModal').addClass('bounceInLeft');
 		}
     });
 });

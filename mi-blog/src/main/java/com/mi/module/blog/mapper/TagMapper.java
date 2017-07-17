@@ -1,7 +1,12 @@
 package com.mi.module.blog.mapper;
 
+import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Tag;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.mi.module.blog.entity.Type;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  *
@@ -13,4 +18,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  */
 public interface TagMapper extends BaseMapper<Tag> {
 
+    List<Tag> load(@Param("pager") Pager pager,@Param("param") String param);
+
+    int checkExist(Tag tag);
 }
