@@ -4,6 +4,15 @@
 [![GitHub stars](https://img.shields.io/github/stars/MIYAOW/MI.svg?style=social&label=Stars)](https://github.com/MIYAOW/MI)
 [![GitHub forks](https://img.shields.io/github/forks/MIYAOW/MI.svg?style=social&label=Fork)](https://github.com/MIYAOW/MI)
 
+## 通知
+
+- 正在更新MI-BLOG模块....
+
+- 采取功能性提交所以代码更新都是好几天完成了才一口气提交
+
+- 相关部署以及程序讲解文档后期跟进（ (┬＿┬) 谅解下我只有一双手一个脑袋）
+ 
+
 ## 作者前言
 
    希望大家一起共同研究。更多的解决方法。 联系方式见点击上边的License即可。
