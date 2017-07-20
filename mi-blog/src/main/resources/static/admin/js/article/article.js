@@ -68,11 +68,11 @@ $("#dataList").on('click','.article-state',function () {
                         url: '/admin/article/updateStatue',
                         data: 'id=' + id + '&status=' +state,
                         success: function (data) {
-                            if (data.resultCode == 'success') {
-                                autoCloseAlert(data.errorInfo, 1000);
+                            if (data.code == '200') {
+                                autoCloseAlert(data.msg, 1000);
                                 loadArticleList();
                             } else {
-                                autoCloseAlert(data.errorInfo, 1000);
+                                autoCloseAlert(data.msg, 1000);
                             }
                         }
                     });

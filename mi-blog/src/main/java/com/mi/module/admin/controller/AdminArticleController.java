@@ -1,10 +1,10 @@
 package com.mi.module.admin.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.mi.data.vo.ArticleCustom;
+import com.mi.common.model.BaseResult;
+import com.mi.common.model.ReturnCode;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Article;
-import com.mi.module.blog.entity.ArticleTag;
 import com.mi.module.blog.entity.Tag;
 import com.mi.module.blog.entity.Type;
 import com.mi.module.blog.service.*;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -51,10 +50,11 @@ public class AdminArticleController {
         iArticleService.initPage(pager);
         return pager;
     }
+
     /**
      * 初始化文章列表
      * @param pager 分页对象
-     * @param categoryId 搜索条件 分类id
+     * @param typeId 搜索条件 分类id
      * @param tagIds 搜索条件 tag集合
      * @param title 搜索条件 文章标题
      * @param model
@@ -97,6 +97,26 @@ public class AdminArticleController {
         model.addAttribute("tagList", tagList);
         model.addAttribute("typeList", typeList);
         return "admin/article/articleInfo";
+    }
+
+
+    /**
+     * 更新文章可用状态
+     * @param id
+     * @param status
+     * @return
+     */
+    @RequestMapping("/updateStatue")
+    @ResponseBody
+    public BaseResult updateStatue(String id, int status) {
+
+        EntityWrapper<Article> ew = new EntityWrapper<>();
+        Article article = new Article();
+        article.setArticleId(id);
+        article.setStatus(status);
+        iArticleService.update(article,ew);
+
+        return  new BaseResult(null,ReturnCode.SUCCESS);
     }
 
     /**
