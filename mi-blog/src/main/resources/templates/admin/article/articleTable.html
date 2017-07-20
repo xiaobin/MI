@@ -5,7 +5,7 @@
     <tr>
         <th>Id</th>
         <th>标题</th>
-        <th>栏目</th>
+        <th>内容</th>
         <th>状态</th>
         <th>创建时间</th>
         <th>操作</th>
@@ -14,18 +14,18 @@
     <tbody>
 
     <tr class="gradeX" th:each="article : ${articleList}">
-        <td th:text="${article.id}"></td>
+        <td th:text="${article.articleId}"></td>
         <td>
-            <a target="_blank" th:href="'/article/details/'+${article.id}" th:text="${article.title}">
+            <a target="_blank" th:href="'/article/details/'+${article.articleId}" th:text="${article.title}">
             </a>
         </td>
-        <td th:text="${article.categoryName}">
+        <td th:text="${article.description}">
         </td>
         <td th:text="${article.status}==1?'正常':'关闭'">
 
         </td>
         <td th:text="${#dates.format(article.createTime,'yyyy-MM-dd')}">2016-10-14 10:41:50</td>
-        <td th:data-id="${article.id}" th:data-state="${article.status}">
+        <td th:data-id="${article.articleId}" th:data-state="${article.status}">
             <button class="btn btn-primary btn-xs article-edit" type="button" title="编辑" >
                 编辑
             </button>

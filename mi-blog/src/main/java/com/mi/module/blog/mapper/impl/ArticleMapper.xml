@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mi.module.blog.mapper.ArticleMapper">
-	<cache eviction="LRU" flushInterval="60000" readOnly="true"/>
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.mi.module.blog.entity.Article">
 		<id column="article_id" property="articleId" />
@@ -31,15 +30,20 @@
 	</resultMap>
 
 	<!--条件查询文章-->
-	<select id="loadArticle" resultType="article" parameterType="map">
-		select *
-		from blog_article
+	<select id="loadArticle" resultMap="BaseResultMap" parameterType="Map">
+		select b.*
+		from blog_article b
 		where 1=1
-		<if test="categoryId != null and categoryId != ''">
-			and category_Id = #{categoryId}
+		<if test="typeId != null and typeId != ''">
+			and b.article_id in
+			(
+			select DISTINCT article_Id from blog_article_type where blog_article_type.type_Id
+			= #{typeId}
+			)
 		</if>
 		<if test="tags != null and tags != ''">
-			and article.id in (select DISTINCT article_Id from articletag where articletag.tagId in
+			and b.article_id in
+			(select DISTINCT article_Id from blog_article_tag where blog_article_tag.tag_Id in
 			<foreach collection="tags" item="item" index="index" open="(" separator="," close=")">
 				#{item}
 			</foreach>

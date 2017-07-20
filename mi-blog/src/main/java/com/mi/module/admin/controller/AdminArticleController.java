@@ -1,8 +1,12 @@
 package com.mi.module.admin.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.mi.data.vo.ArticleCustom;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Article;
+import com.mi.module.blog.entity.ArticleTag;
+import com.mi.module.blog.entity.Tag;
+import com.mi.module.blog.entity.Type;
 import com.mi.module.blog.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,13 +32,11 @@ import java.util.Map;
 public class AdminArticleController {
 
     @Autowired
-    IArticleService iArticleService;
+    IArticleService iArticleService; //文章service
     @Autowired
-    IFriendlinkService iFriendlinkService;
+    ITypeService iTypeService; //分类service
     @Autowired
-    ITypeService iTypeService;
-    @Autowired
-    ITagService iTagService;
+    ITagService iTagService; //标签service
     @Autowired
     IUserInfoService iUserInfoService;
 
@@ -50,14 +52,6 @@ public class AdminArticleController {
         return pager;
     }
     /**
-     * 跳转到添加页面
-     * @return
-     */
-    @RequestMapping("/insertPage")
-    public String insertPage(){
-        return "admin/article/articleAdd";
-    }
-    /**
      * 初始化文章列表
      * @param pager 分页对象
      * @param categoryId 搜索条件 分类id
@@ -66,8 +60,9 @@ public class AdminArticleController {
      * @param model
      * @return
      */
+
     @RequestMapping("/load")
-    public String loadArticle(Pager pager, Integer categoryId, String tagIds, String title, Model model) {
+    public String loadArticle(Pager pager, String typeId, String tagIds, String title, Model model) {
         /**
          * 设置start位置
          */
@@ -79,7 +74,7 @@ public class AdminArticleController {
         }else {
             param.put("tags", null);
         }
-        param.put("categoryId", categoryId);
+        param.put("typeId", typeId);
         param.put("title",title);
         param.put("pager", pager);
         //获取文章列表
@@ -87,4 +82,30 @@ public class AdminArticleController {
         model.addAttribute("articleList", articleList);
         return "admin/article/articleTable";
     }
+
+    /**
+     * 获取条件,所有tag和category
+     * @param model
+     * @return
+     */
+    @RequestMapping("/term")
+    public String articleTerm(Model model) {
+        EntityWrapper<Tag> ewTag = new EntityWrapper<>();
+        List<Tag> tagList = iTagService.selectList(ewTag);
+        EntityWrapper<Type> ewType = new EntityWrapper<>();
+        List<Type> typeList = iTypeService.selectList(ewType);
+        model.addAttribute("tagList", tagList);
+        model.addAttribute("typeList", typeList);
+        return "admin/article/articleInfo";
+    }
+
+    /**
+     * 跳转到添加页面
+     * @return
+     */
+    @RequestMapping("/addPage")
+    public String addPage(){
+        return "admin/article/articleAdd";
+    }
+
 }

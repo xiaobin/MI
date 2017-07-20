@@ -1,6 +1,7 @@
 package com.mi.data.vo;
 
 
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.mi.module.blog.entity.Tag;
 import com.mi.module.blog.entity.Type;
 

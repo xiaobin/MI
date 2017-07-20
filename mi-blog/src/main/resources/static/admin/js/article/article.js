@@ -90,8 +90,8 @@ $("#dataList").on('click','.article-state',function () {
 // 加载文章列表
 function loadArticleList(){
 
-    var categoryId = $("#categoryId option:selected").val();
     var keyword = $("#keyword").val();
+    var typeId = $("#typeId option:selected").val();
     var tagIds = [];
     $("#tagId option:selected").each(function () {
         tagIds.push($(this).val());
@@ -99,7 +99,7 @@ function loadArticleList(){
 	// 查询列表
 	$.ajax({
         url : '/admin/article/load',
-        data : 'totalCount='+pager.totalCount+'&page='+pager.page+"&categoryId="+categoryId+"&title="+keyword+"&tagIds="+tagIds,
+        data : 'totalCount='+pager.totalCount+'&page='+pager.page+"&typeId="+typeId+"&title="+keyword+"&tagIds="+tagIds,
         success  : function(data) {
         	$("#dataList").html(data);
 		}
