@@ -1,6 +1,6 @@
 logs
 # 项目资源
-.idea
+.idea/
 .project-resouce
 *.iml
 # 目录结构太长隐藏
@@ -13,5 +13,5 @@ mi-app
 
 mi-config
 
-/mi-blog/src/main/resources/application.properties
-.idea/
+#/mi-blog/src/main/resources/application.properties
+#.idea/
