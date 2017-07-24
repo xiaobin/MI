@@ -13,5 +13,4 @@ mi-app
 
 mi-config
 
-#/mi-blog/src/main/resources/application.properties
-#.idea/
+/mi-blog/src/main/resources/application.properties
