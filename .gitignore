@@ -4,12 +4,12 @@ logs
 *.iml
 test
 
-#.project-resouce
+.project-resouce
 # 目录结构太长隐藏
 # 暂时隐藏
-#mi-admin
-#mi-api
-#mi-app
-#
-#mi-config
+mi-admin
+mi-api
+mi-app
+
+mi-config
 
