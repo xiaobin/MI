@@ -15,3 +15,4 @@ mi-app
 mi-config
 
 /mi-blog/src/main/resources/application.properties
+/mi-blog/src/main/java/com/mi/MiBlogApplication.java
