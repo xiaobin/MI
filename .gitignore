@@ -10,7 +10,5 @@ mi-admin
 mi-api
 mi-app
 
-
 mi-config
 
-/mi-blog/src/main/resources/application.properties
