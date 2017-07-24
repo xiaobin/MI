@@ -1,6 +1,5 @@
 logs
 # 项目资源
-
 .idea
 .project-resouce
 *.iml
@@ -15,7 +14,3 @@ mi-app
 mi-config
 
 application.properties
-/mi-blog/src/main/java/com/mi/data/dto/readme.txt
-mi-blog/src/main/java/com/mi/data/dto/
-mi-blog/target/
-mi-common/target/
