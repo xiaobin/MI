@@ -33,7 +33,7 @@ public class DataBaseConfiguration {
      * 主库配置（负责写）
      * @return
      */
-    @Bean(name="masterDataSource", destroyMethod = "close", initMethod="init")
+    @Bean(name="masterDataSource")
     @Primary
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource writeDataSource() {

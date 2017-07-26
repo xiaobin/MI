@@ -18,4 +18,10 @@ public interface IUserService extends IService<User> {
      * @return
      */
     User selectByName(String username);
+
+    /**
+     * 获取当前用户
+     * @return
+     */
+    User getCurrentUser();
 }

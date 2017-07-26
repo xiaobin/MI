@@ -7,6 +7,7 @@ import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Article;
 import com.mi.module.blog.entity.Tag;
 import com.mi.module.blog.entity.Type;
+import com.mi.module.blog.entity.User;
 import com.mi.module.blog.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,8 @@ public class AdminArticleController {
     ITagService iTagService; //标签service
     @Autowired
     IUserInfoService iUserInfoService;
+    @Autowired
+    IUserService iUserService;
 
     /**
      * 初始化文章分页信息
@@ -89,7 +92,7 @@ public class AdminArticleController {
      * @return
      */
     @RequestMapping("/term")
-    public String articleTerm(Model model) {
+    public String getArticleTerm(Model model) {
         EntityWrapper<Tag> ewTag = new EntityWrapper<>();
         List<Tag> tagList = iTagService.selectList(ewTag);
         EntityWrapper<Type> ewType = new EntityWrapper<>();
@@ -128,6 +131,23 @@ public class AdminArticleController {
         return "admin/article/articleAdd";
     }
 
+
+    /**
+     * 保存文章
+     * @param article
+     * @param tags
+     * @return
+     */
+    @RequestMapping("/save")
+    @ResponseBody
+    public BaseResult insert(Article article,String[] tags,String typeId){
+        System.err.println(""+article);
+        User user = iUserService.getCurrentUser();
+        article.setAuthor(user.getUserName());
+        Integer result = iArticleService.insertArticle(article,tags,typeId);
+
+        return null;
+    }
 
 
 }

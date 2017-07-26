@@ -16,13 +16,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataSourceAop {
 
-    @Before("execution(* com.mi.module.*.mapper..*.select*(..)) || execution(* com.mi.module.*.mapper..*.find*(..)) || execution(* com.mi.module.*.mapper..*.get*(..))")
+    @Before("execution(* com.mi.module.*.mapper..*.load*(..)) || execution(* com.mi.module.*.mapper..*.select*(..)) || execution(* com.mi.module.*.mapper..*.find*(..)) || execution(* com.mi.module.*.mapper..*.get*(..))")
     public void setReadDataSourceType() {
         DataSourceContextHolder.read();
         log.info("dataSource切换到：Read");
     }
 
-    @Before("execution(* com.mi.module.*.mapper..*.insert*(..)) || execution(* com.mi.module.*.mapper..*.update*(..))")
+    @Before("execution(* com.mi.module.*.mapper..*.insert*(..)) || execution(* com.mi.module.*.mapper..*.update*(..)) || execution(* com.mi.module.*.mapper..*.save*(..)) ")
     public void setWriteDataSourceType() {
         DataSourceContextHolder.write();
         log.info("dataSource切换到：write");

@@ -48,4 +48,16 @@ public interface IArticleService extends IService<Article> {
      * @return
      */
     List<Article> loadArticle(Map<String, Object> param);
+
+    /**
+     * 添加文章
+     * @param article
+     * @param tags
+     * @param typeId
+     * @return
+     */
+    Integer insertArticle(Article article, String[] tags, String typeId);
+
+
+
 }

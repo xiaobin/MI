@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DataSourceContextHolder {
 
-    private static final ThreadLocal<String> local = new ThreadLocal<String>();
+    private static final  ThreadLocal<String> local = new ThreadLocal<String>();
 
     public static ThreadLocal<String> getLocal() {
         return local;
