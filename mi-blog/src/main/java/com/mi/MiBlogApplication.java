@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableConfigurationProperties
-@EnableTransactionManagement
 public class MiBlogApplication {
 
 	public static void main(String[] args) {
