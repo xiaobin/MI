@@ -40,16 +40,16 @@ public class DataBaseConfiguration {
         log.info("-------------------- Master DataSource init ---------------------");
         return DataSourceBuilder.create().type(dataSourceType).build();
     }
-    /**
-     * 从库配置（负责读）
-     * @return
-     */
-    @Bean(name = "slaveDataSourceOne")
-    @ConfigurationProperties(prefix = "spring.slave")
-    public DataSource readDataSourceOne(){
-        log.info("-------------------- Slave DataSource One init ---------------------");
-        return DataSourceBuilder.create().type(dataSourceType).build();
-    }
+//    /**
+//     * 从库配置（负责读）
+//     * @return
+//     */
+//    @Bean(name = "slaveDataSourceOne")
+//    @ConfigurationProperties(prefix = "spring.slave")
+//    public DataSource readDataSourceOne(){
+//        log.info("-------------------- Slave DataSource One init ---------------------");
+//        return DataSourceBuilder.create().type(dataSourceType).build();
+//    }
 
 //    @Bean(name = "slaveDataSourceTwo")
 //    @ConfigurationProperties(prefix = "spring.slave1",locations = "classpath:application.properties")
@@ -58,11 +58,11 @@ public class DataBaseConfiguration {
 //        return DataSourceBuilder.create().type(dataSourceType).build();
 //    }
 
-    @Bean("readDataSources")
-    public List<DataSource> readDataSources(){
-        List<DataSource> dataSources=new ArrayList<>();
-        dataSources.add(readDataSourceOne());
-//        dataSources.add(readDataSourceTwo());
-        return dataSources;
-    }
+//    @Bean("readDataSources")
+//    public List<DataSource> readDataSources(){
+//        List<DataSource> dataSources=new ArrayList<>();
+//        dataSources.add(readDataSourceOne());
+////        dataSources.add(readDataSourceTwo());
+//        return dataSources;
+//    }
 }

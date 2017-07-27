@@ -37,7 +37,7 @@ import java.util.Map;
  */
 @Slf4j
 @Configuration
-@ConditionalOnClass({EnableTransactionManagement.class})
+@EnableTransactionManagement //开启事务管理
 @MapperScan(value = "com.mi.module.*.mapper")
 @Import({ DataBaseConfiguration.class})
 public class MybatisPlusConfig{
@@ -51,8 +51,8 @@ public class MybatisPlusConfig{
     @Resource(name = "masterDataSource")
     private DataSource dataSource;
 
-    @Resource(name = "readDataSources")
-    private List<DataSource> readDataSources;
+//    @Resource(name = "readDataSources")
+//    private List<DataSource> readDataSources;
 
 
     @Autowired
@@ -87,7 +87,7 @@ public class MybatisPlusConfig{
     @ConditionalOnMissingBean
     public MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean() {
         MybatisSqlSessionFactoryBean mybatisPlus = new MybatisSqlSessionFactoryBean();
-        mybatisPlus.setDataSource(roundRobinDataSouceProxy());
+        mybatisPlus.setDataSource(dataSource);
         mybatisPlus.setVfs(SpringBootVFS.class);
         if (StringUtils.hasText(this.properties.getConfigLocation())) {
             mybatisPlus.setConfigLocation(this.resourceLoader.getResource(this.properties.getConfigLocation()));
@@ -139,31 +139,31 @@ public class MybatisPlusConfig{
 //        return sqlSessionFactoryBean.getObject();
 //    }
 
-    /**
-     * 有多少个数据源就要配置多少个bean
-     * @return
-     */
-    @Bean
-    public AbstractRoutingDataSource roundRobinDataSouceProxy() {
-
-        int size = Integer.parseInt(dataSourceSize);
-
-        MyAbstractRoutingDataSource proxy = new MyAbstractRoutingDataSource(size);
-
-        Map<Object, Object> targetDataSources = new HashMap<Object, Object>();
-
-        // DataSource writeDataSource = SpringContextHolder.getBean("writeDataSource");
-        //设置写库
-        targetDataSources.put(DataSourceType.write.getType(),dataSource);
-
-        // targetDataSources.put(DataSourceType.read.getType(),readDataSource);
-        //设置多读库
-        for (int i = 0; i < size; i++) {
-            targetDataSources.put(i, readDataSources.get(i));
-        }
-
-        proxy.setDefaultTargetDataSource(dataSource);
-        proxy.setTargetDataSources(targetDataSources);
-        return proxy;
-    }
+//    /**
+//     * 有多少个数据源就要配置多少个bean
+//     * @return
+//     */
+//    @Bean
+//    public AbstractRoutingDataSource roundRobinDataSouceProxy() {
+//
+//        int size = Integer.parseInt(dataSourceSize);
+//
+//        MyAbstractRoutingDataSource proxy = new MyAbstractRoutingDataSource(size);
+//
+//        Map<Object, Object> targetDataSources = new HashMap<Object, Object>();
+//
+//        // DataSource writeDataSource = SpringContextHolder.getBean("writeDataSource");
+//        //设置写库
+//        targetDataSources.put(DataSourceType.write.getType(),dataSource);
+//
+//        // targetDataSources.put(DataSourceType.read.getType(),readDataSource);
+//        //设置多读库
+//        for (int i = 0; i < size; i++) {
+//            targetDataSources.put(i, readDataSources.get(i));
+//        }
+//
+//        proxy.setDefaultTargetDataSource(dataSource);
+//        proxy.setTargetDataSources(targetDataSources);
+//        return proxy;
+//    }
 }

@@ -11,14 +11,16 @@ import com.mi.module.blog.mapper.ArticleTagMapper;
 import com.mi.module.blog.mapper.ArticleTypeMapper;
 import com.mi.module.blog.service.IArticleService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.annotation.Resource;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * 
@@ -28,6 +30,7 @@ import java.util.Random;
  *         (M.M)!
  *         Created by 2017-07-09.
  */
+@Slf4j
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements IArticleService {
 
@@ -69,19 +72,16 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     @Transactional
     public Integer insertArticle(Article article, String[] tags, String typeId) {
-        String id  = getRandomId();
-        for (int i = 0; i < 50; i++) {
-            Article articleTemp = new Article();
-            articleTemp.setArticleId(id);
-            EntityWrapper<Article> ew = new EntityWrapper<Article>();
-            ew.setEntity(articleTemp);
-            int count = articleMapper.selectCount(ew);
-            if (count==0) break;
-            else id = getRandomId();
-        }
+
+        String id = getRandomId();
+
+        article.setArticleId(id);
         articleMapper.insert(article);
 
-//        int i = 1/0;
+
+        throw new IllegalArgumentException("sang 已存在，数据将回滚");
+
+
 //        ArticleType articleType = new ArticleType();
 //        articleType.setArticleId(id);
 //        articleType.setTypeId(typeId);
@@ -95,17 +95,15 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 //        }
 
 
-        return 1;
+
     }
 
 
 
     private String getRandomId(){
-        Calendar instance = Calendar.getInstance();
-        int month = instance.MONTH;
-        int dayOfMonth = instance.DAY_OF_MONTH;
-        int random = new Random().nextInt(8999)+1000;
-        StringBuilder append = new StringBuilder().append(month).append(dayOfMonth).append(random);
+        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String temp = sf.format(new Date());
+        StringBuilder append = new StringBuilder().append(UUID.randomUUID()).append(temp);
         return append.toString();
     }
 }
