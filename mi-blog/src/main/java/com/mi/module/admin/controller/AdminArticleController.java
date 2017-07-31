@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -120,8 +121,8 @@ public class AdminArticleController {
         Article article = new Article();
         article.setArticleId(id);
         article.setStatus(status);
-        iArticleService.update(article,ew);
-
+        ew.setEntity(article);
+        iArticleService.updateById(article);
         return  new BaseResult(null,ReturnCode.SUCCESS);
     }
 
@@ -144,12 +145,16 @@ public class AdminArticleController {
     @RequestMapping("/save")
     @ResponseBody
     public BaseResult insert(Article article,String[] tags,String typeId){
-        System.err.println(""+article);
         User user = iUserService.getCurrentUser();
         article.setAuthor(user.getUserName());
+        article.setCreateTime(new Date());
+        article.setStatus(1);
         Integer result = iArticleService.insertArticle(article,tags,typeId);
+        if (result == 1){
+            return  new BaseResult(null,ReturnCode.SUCCESS);
+        }
 
-        return null;
+        return  new BaseResult(null,ReturnCode.FAIL);
     }
 
 

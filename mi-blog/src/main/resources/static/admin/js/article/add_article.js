@@ -147,7 +147,7 @@ function save() {
         url: '/admin/article/save',
         data: 'typeId=' + typeId + "&tags=" + tagIds + "&title=" + title + "&content=" + content + "&description=" +  description,
         success: function (data) {
-            if (data.code != 'success') {
+            if (data.code != 200) {
                 autoCloseAlert(data.msg, 1000);
                 return false;
             } else {

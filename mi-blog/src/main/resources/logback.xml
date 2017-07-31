@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" dubug="false" scanPeriod="60 seconds">
+<configuration scan="true" dubug="true" scanPeriod="60 seconds">
 
     <contextName>mi_platform_center</contextName>
 
@@ -82,7 +82,5 @@
     <logger name="java.sql.ResultSet" level="DEBUG"/>
 
     <logger name="com.mi.module" level="DEBUG"></logger>
-
-
 
 </configuration>

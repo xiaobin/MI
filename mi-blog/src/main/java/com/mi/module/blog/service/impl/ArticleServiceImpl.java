@@ -13,10 +13,7 @@ import com.mi.module.blog.service.IArticleService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
@@ -75,35 +72,29 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
         String id = getRandomId();
 
+        for (int j = 0; j < tags.length; j++) {
+            ArticleTag articleTag = new ArticleTag();
+            articleTag.setArticleId(id);
+            articleTag.setTagId(tags[j]);
+            articleTagMapper.insert(articleTag);
+        }
+
+        ArticleType articleType = new ArticleType();
+        articleType.setArticleId(id);
+        articleType.setTypeId(typeId);
+        articleTypeMapper.insert(articleType);
+
+        int result;
         article.setArticleId(id);
-        articleMapper.insert(article);
+        result = articleMapper.insert(article);
 
-
-        throw new IllegalArgumentException("sang 已存在，数据将回滚");
-
-
-//        ArticleType articleType = new ArticleType();
-//        articleType.setArticleId(id);
-//        articleType.setTypeId(typeId);
-//        articleTypeMapper.insert(articleType);
-
-//        for (int j = 0; j < tags.length; j++) {
-//            ArticleTag articleTag = new ArticleTag();
-//            articleTag.setArticleId(id);
-//            articleTag.setTagId(tags[j]);
-//            articleTagMapper.insert(articleTag);
-//        }
-
-
-
+        return result;
     }
-
-
 
     private String getRandomId(){
         SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
         String temp = sf.format(new Date());
-        StringBuilder append = new StringBuilder().append(UUID.randomUUID()).append(temp);
+        StringBuilder append = new StringBuilder().append(temp).append(UUID.randomUUID().toString().substring(1,5));
         return append.toString();
     }
 }
