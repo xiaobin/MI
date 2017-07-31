@@ -28,7 +28,7 @@
 
 #### 结构图解
 
-![结构图解](.project-resouce/MI-structural-diagram.png)
+![结构图解](.project-resouce/MI-pro.png)
 
 #### 模块简介
 
