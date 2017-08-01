@@ -1,6 +1,7 @@
 package com.mi.module.blog.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.mi.common.util.IDUntil;
 import com.mi.data.vo.ArticleCustom;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Article;
@@ -70,7 +71,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Transactional
     public Integer insertArticle(Article article, String[] tags, String typeId) {
 
-        String id = getRandomId();
+        String id = IDUntil.getRandomId(5);
 
         for (int j = 0; j < tags.length; j++) {
             ArticleTag articleTag = new ArticleTag();
@@ -118,10 +119,5 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         return result;
     }
 
-    private String getRandomId(){
-        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
-        String temp = sf.format(new Date());
-        StringBuilder append = new StringBuilder().append(temp).append(UUID.randomUUID().toString().substring(1,5));
-        return append.toString();
-    }
+
 }
