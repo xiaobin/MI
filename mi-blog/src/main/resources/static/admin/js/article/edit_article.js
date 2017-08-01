@@ -2,7 +2,7 @@ var testEditor;
 
 $(function () {
     testEditor = editormd("article-editormd", {
-        width: "99%",
+        width: "70%",
         height: $(window).height()-20,
         path : '/admin/lib/',
         codeFold : true,
@@ -87,9 +87,9 @@ function getRootPath() {
 	return (localhostPaht + projectName + "/");
 }
 
-// 保存文章
+// 编辑文章
 function editArticle(){
-	var articleId = $("#article-id").val();
+	var articleId = $("#articleId").val();
     $.ajax({
         url: '/admin/article/updateInfo?articleId='+articleId,
         success: function (data) {
@@ -110,34 +110,33 @@ function editArticle(){
 function save() {
 	var id = $("#articleId").val();
 
-    var categoryId = $("#categoryId").val();
-    if(isEmpty(categoryId)){
-        autoCloseconsole.log("请选择栏目",500);
+    var typeId = $("#typeId").val();
+    if(isEmpty(typeId)){
+        autoCloseAlert("请选择栏目",500);
         return false;
     }
     var title = $("#title").val();
     if(isEmpty(title)){
-        autoCloseconsole.log("请输入标题",500);
+        autoCloseAlert("请输入标题",500);
         return false;
     }
-    title = encodeURIComponent(title);
+    // title = encodeURIComponent(title);
 
     var content = testEditor.getMarkdown();
-    content = encodeURIComponent(content);
+    // content = encodeURIComponent(content);
     var description = $("#description").val();
     if (isEmpty(description)) {
-        autoCloseconsole.log("请输入文章描述", 500);
+        autoCloseAlert("请输入文章描述", 500);
         return false;
     }
-    description = encodeURIComponent(description);
+    // description = encodeURIComponent(description);
     // 标签
     var tagIds = [];
     $("#tagId option:selected").each(function () {
         tagIds.push($(this).val());
     })
     if (isEmpty(tagIds)) {
-        autoCloseconsole.log("请输入标签", 500);
-        return false;
+        autoCloseAlert("未选择新标签 \n 按照原先标签保存", 2000);
         // var ids = (tagId+"").split(",");
         // var tagArray = [];
         // for(var i=0;i<ids.length;i++){
@@ -152,10 +151,10 @@ function save() {
     $.ajax({
         type : "POST",
         url :  '/admin/article/update',
-        data : 'id='+id+'&categoryId=' + categoryId + "&tags=" + tagIds + "&title=" + title + "&content=" + encodeURI(content) + "&description=" +  encodeURI(description),
+        data : 'articleId='+id+'&typeId=' + typeId + "&tags=" + tagIds + "&title=" + title + "&content=" + content + "&description=" +  description,
         success  : function(data) {
-            if(data.resultCode != 'success'){
-                autoCloseconsole.log(data.errorInfo,1000);
+            if(data.code != '200'){
+                autoCloseAlert(data.msg,1000);
                 closeEditWindow();
                 return false;
             }else{
@@ -184,7 +183,7 @@ function save() {
 }
 
 function cancleEditArticle(){
-	window.location.href = getRootPath()+ "admin/article/list";
+	window.location.href = getRootPath()+ "/article/list";
 }
 
 //关闭编辑窗口

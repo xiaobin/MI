@@ -69,8 +69,8 @@ $("#dataList").on('click','.article-state',function () {
                         data: 'id=' + id + '&status=' +state,
                         success: function (data) {
                             if (data.code == '200') {
-                                autoCloseAlert(data.msg, 1000);
                                 loadArticleList();
+                                autoCloseAlert(data.msg, 1000);
                             } else {
                                 autoCloseAlert(data.msg, 1000);
                             }
@@ -87,54 +87,35 @@ $("#dataList").on('click','.article-state',function () {
     });
 });
 
-// 加载文章列表
-function loadArticleList(){
-
-    var keyword = $("#keyword").val();
-    var typeId = $("#typeId option:selected").val();
-    var tagIds = [];
-    $("#tagId option:selected").each(function () {
-        tagIds.push($(this).val());
-    })
-	// 查询列表
-	$.ajax({
-        url : '/admin/article/load',
-        data : 'totalCount='+pager.totalCount+'&page='+pager.page+"&typeId="+typeId+"&title="+keyword+"&tagIds="+tagIds,
-        success  : function(data) {
-        	$("#dataList").html(data);
-		}
-    });
-	
-}
-
 
 // 搜索
 $("#article-search").on('click',function () {
- loadArticleList();
+    loadArticleList();
 });
 
 // 新增文章  跳转新页
 $("#article-add").on('click',function () {
     window.location.href = "/admin/article/addPage";
 });
-
 // 删除文章
 $("#dataList").on('click','.article-delete',function () {
+    var id = $(this).parent().data("id")
+
+
     new $.flavr({
         content: '您确定要删除吗?',
-
         buttons: {
             primary: {
                 text: '确定', style: 'primary', action: function () {
                     $.ajax({
-                        url : '/admin/article/delete/'+$(this).parent().data("id"),
-                        method: "GET",
+                        url : '/admin/article/delete',
+                        data: 'id='+id,
                         success  : function(data) {
-                            if(data.resultCode == 'success'){
-                                autoCloseAlert(data.errorInfo,1000);
+                            if(data.code == '200'){
                                 loadArticleList();
+                                autoCloseAlert(data.msg,1000);
                             }else{
-                                autoCloseAlert(data.errorInfo,1000);
+                                autoCloseAlert(data.msg,1000);
                             }
                         }
                     });
@@ -152,8 +133,28 @@ $("#dataList").on('click','.article-delete',function () {
 });
 
 
+// 加载文章列表
+function loadArticleList(){
+
+    var keyword = $("#keyword").val();
+    var typeId = $("#typeId option:selected").val();
+    var tagIds = [];
+    $("#tagId option:selected").each(function () {
+        tagIds.push($(this).val());
+    })
+    // 查询列表
+    $.ajax({
+        url : '/admin/article/load',
+        data : 'totalCount='+pager.totalCount+'&page='+pager.page+"&typeId="+typeId+"&title="+keyword+"&tagIds="+tagIds,
+        success  : function(data) {
+            $("#dataList").html(data);
+        }
+    });
+
+}
+
 
 // 编辑文章
 $("#dataList").on('click','.article-edit',function () {
-	window.open("/admin/article/editJump/?id="+$(this).parent().data("id"));
+	window.open("/admin/article/editJump?id="+$(this).parent().data("id"));
 });

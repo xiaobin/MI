@@ -59,5 +59,12 @@ public interface IArticleService extends IService<Article> {
     Integer insertArticle(Article article, String[] tags, String typeId);
 
 
-
+    /**
+     * 修改文章
+     * @param article
+     * @param tags
+     * @param typeId
+     * @return
+     */
+    Integer updateArticle(Article article, String[] tags, String typeId);
 }

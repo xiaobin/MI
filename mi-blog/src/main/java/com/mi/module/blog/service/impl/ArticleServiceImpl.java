@@ -91,6 +91,33 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         return result;
     }
 
+    @Override
+    public Integer updateArticle(Article article, String[] tags, String typeId) {
+        article.setUpdateTime(new Date());
+        article.setStatus(1);
+
+        //移除原有相关链接之后再添加
+        articleTypeMapper.deleteById(article.getArticleId());
+        ArticleType articleType = new ArticleType();
+        articleType.setArticleId(article.getArticleId());
+        articleType.setTypeId(typeId);
+        articleTypeMapper.insert(articleType);
+
+        articleTagMapper.deleteById(article.getArticleId());
+        if (tags!=null){
+            for (int i = 0; i < tags.length; i++) {
+                ArticleTag at = new ArticleTag();
+                at.setArticleId(article.getArticleId());
+                at.setTagId(tags[i]);
+                articleTagMapper.insert(at);
+            }
+        }
+
+        int result =  articleMapper.updateById(article);
+
+        return result;
+    }
+
     private String getRandomId(){
         SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
         String temp = sf.format(new Date());
