@@ -3,6 +3,7 @@ package com.mi.module.admin.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.mi.common.model.BaseResult;
 import com.mi.common.model.ReturnCode;
+import com.mi.common.util.IDUntil;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.ArticleType;
 import com.mi.module.blog.entity.Type;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -80,6 +82,8 @@ public class AdminTypeController {
         }
         //检查数据是否存在
         boolean result =  iTypeService.checkExist(type);
+        type.setTypeId(IDUntil.getRandomId(5));
+        type.setCreateTime(new Date());
         if (result){
             return new BaseResult(null, ReturnCode.FAIL,"已存在分类");
         }else if (iTypeService.insert(type)){

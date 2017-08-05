@@ -3,6 +3,7 @@ package com.mi.module.admin.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.mi.common.model.BaseResult;
 import com.mi.common.model.ReturnCode;
+import com.mi.common.util.IDUntil;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.ArticleTag;
 import com.mi.module.blog.entity.ArticleType;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -83,6 +85,8 @@ public class AdminTagController {
         }
         //检查数据是否存在
         boolean result =  iTagService.checkExist(tag);
+        tag.setTagId(IDUntil.getRandomId(5));
+        tag.setCreateTime(new Date());
         if (result){
             return new BaseResult(null, ReturnCode.FAIL,"已存在标签");
         }else if (iTagService.insert(tag)){

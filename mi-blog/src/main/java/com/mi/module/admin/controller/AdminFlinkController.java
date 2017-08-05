@@ -3,6 +3,7 @@ package com.mi.module.admin.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.mi.common.model.BaseResult;
 import com.mi.common.model.ReturnCode;
+import com.mi.common.util.IDUntil;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Friendlink;
 import com.mi.module.blog.service.IFriendlinkService;
@@ -68,6 +69,7 @@ public class AdminFlinkController {
     public BaseResult save(Friendlink flink){
         BaseResult br = new BaseResult();
         flink.setCreateTime(new Date());
+        flink.setFlinkId(IDUntil.getRandomId(5));
         boolean  result = iFriendlinkService.insert(flink);
         if (result){
             br.setMsg("添加成功");
