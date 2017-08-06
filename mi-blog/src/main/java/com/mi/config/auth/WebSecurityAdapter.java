@@ -32,7 +32,8 @@ public class WebSecurityAdapter extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/admin/home").permitAll()
-
+            .and()
+                .headers().frameOptions().disable()// x-frame-options deny
             .and()
                 .logout()
                 .logoutUrl("/admin/loginOut")
