@@ -95,10 +95,17 @@ public class PageRouteController {
         model.addAttribute("typeList",typeList);
         return "admin/article/articleList";
     }
-      /** 后台首页 **/
+      /** 后台首页（文章） **/
     @RequestMapping("/admin/home")
     public String homePage(){
         return "redirect:/admin/article/list";
+    }
+    /** 后台首页内容 **/
+    @RequestMapping("/admin/index")
+    public String mainPage(Model model){
+        UserInfo userInfo =  iUserInfoService.selectByUserId("1");
+        model.addAttribute("userInfo",userInfo);
+        return "admin/index";
     }
 
 

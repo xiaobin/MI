@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<html lang="zh">
 <head th:replace="~{admin/partial/head :: head}"></head>
 
-<body>
-<div id="wrapper">
-    <nav class="navbar-default navbar-static-side" role="navigation" th:insert="~{admin/partial/sidebar :: sidebar}">
-    </nav>
-
-    <div id="page-wrapper" class="gray-bg dashbard-1">
-        <div class="row wrapper border-bottom white-bg page-heading">
+<div id="wrapper" class="gray-bg dashbard-1">
+    <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
                 <h2>文章列表</h2>
                 <ol class="breadcrumb">
@@ -27,7 +22,7 @@
 
             </div>
         </div>
-        <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
@@ -79,30 +74,8 @@
                 </div>
             </div>
         </div>
-
-    </div>
-    <!--添加footer-->
-    <div class="footer fixed" th:insert="~{admin/partial/footer :: copyright}">
-
-    </div>
 </div>
 
-</div>
-
-<!-- 编辑页面 -->
-<div class="modal inmodal" id="editArticleModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div id="editArticleContent" class="modal-body">
-
-        </div>
-    </div>
-</div>
-
-
-<!-- 修改用户信息 -->
-<!--<div class="modal inmodal" id="addArticleModal" tabindex="-1" role="dialog" aria-hidden="true" th:replace="admin/partial/module-userinfo :: update-modal"></div>-->
-
-<!--<div class="container" id="crop-avatar" th:replace="~{admin/partial/avatar :: avatar}"></div>-->
 
 <!-- Mainly scripts -->
 <script src="/js/jquery.min.js"></script>

@@ -1,85 +1,75 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 <head th:replace="~{admin/partial/head :: head}"></head>
-
 <body>
-<div id="wrapper">
-    <nav class="navbar-default navbar-static-side" role="navigation" th:insert="~{admin/partial/sidebar :: sidebar}" />
-
-    <div id="page-wrapper" class="gray-bg dashbard-1">
-        <div class="row wrapper border-bottom white-bg page-heading">
-            <div class="col-lg-10">
-                <h2>分类列表</h2>
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="/admin/home">主页</a>
-                    </li>
-                    <li>
-                        <a>分类管理</a>
-                    </li>
-                    <li>
-                        <strong>分类列表</strong>
-                    </li>
-                </ol>
-            </div>
-            <div class="col-lg-2">
-
-            </div>
+<div id="wrapper" class="gray-bg dashbard-1">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>分类列表</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/admin/home">主页</a>
+                </li>
+                <li>
+                    <a>分类管理</a>
+                </li>
+                <li>
+                    <strong>分类列表</strong>
+                </li>
+            </ol>
         </div>
-        <div class="wrapper wrapper-content animated fadeInRight">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-content">
-                            <div class="row">
-                                <form class="form-inline">
-                                    <div class="col-sm-2">
-                                        <div class="input-group">
-                                            <input type="text" id="keyword" placeholder="请输入分类名称" class="input-sm form-control">
-                                            <span class="input-group-btn">
-		                                        		<button id="search" type="button" class="btn btn-sm btn-primary">搜索</button>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <form class="form-inline">
+                                <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input type="text" id="keyword" placeholder="请输入分类名称"
+                                               class="input-sm form-control">
+                                        <span class="input-group-btn">
+		                                        		<button id="search" type="button"
+                                                                class="btn btn-sm btn-primary">搜索</button>
 		                                        	</span>
-                                        </div>
                                     </div>
-                                    <button id="add" type="button" class="btn btn-sm btn-danger">新增分类</button>
-                                </form>
+                                </div>
+                                <button id="add" type="button" class="btn btn-sm btn-danger">新增分类</button>
+                            </form>
+                        </div>
+
+                        <!-- 表格数据 -->
+                        <div id="dataList">
+
+                        </div>
+
+                        <div>
+                            <div style="float: left" class="pagination">共
+                                <span id="total-num"></span>
+                                条记录
+                                <span id="current-page"></span>
+                                /
+                                <span id="total-page"></span>
                             </div>
 
-                            <!-- 表格数据 -->
-                            <div id="dataList">
-
-                            </div>
-
-                            <div>
-                                <div style="float: left" class="pagination">共
-                                    <span id="total-num"></span>
-                                    条记录
-                                    <span id="current-page"></span>
-                                    /
-                                    <span id="total-page"></span>
-                                </div>
-
-                                <div id="pagination" class="pagination" style="float: right">
-
-                                </div>
+                            <div id="pagination" class="pagination" style="float: right">
 
                             </div>
 
                         </div>
+
                     </div>
                 </div>
             </div>
-
         </div>
-
-        <!--添加footer-->
-        <div class="footer fixed" th:insert="~{admin/partial/footer :: copyright}" />
-
 
     </div>
 </div>
-
-
 <!-- 新增页面 -->
 <div class="modal inmodal" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -97,14 +87,6 @@
         </div>
     </div>
 </div>
-
-
-
-<!--&lt;!&ndash; 修改用户信息 &ndash;&gt;-->
-<!--<div class="modal inmodal" id="addArticleModal" tabindex="-1" role="dialog" aria-hidden="true" th:replace="admin/partial/module-userinfo :: update-modal"></div>-->
-
-<!--<div class="container" id="crop-avatar" th:replace="~{admin/partial/avatar :: avatar}"></div>-->
-
 
 <!-- Mainly scripts -->
 <script src="/js/jquery.min.js"></script>
