@@ -1,71 +1,73 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 <head th:replace="~{admin/partial/head :: head}"></head>
+
 <body>
 <div id="wrapper" class="gray-bg dashbard-1">
     <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
-        <h2>友情链接</h2>
-        <ol class="breadcrumb">
-            <li>
-                <a href="/admin/home">主页</a>
-            </li>
-            <li>
-                <a>友情链接管理</a>
-            </li>
-            <li>
-                <strong>友情链接列表</strong>
-            </li>
-        </ol>
-    </div>
-    <div class="col-lg-2">
+        <div class="col-lg-10">
+            <h2>友情链接</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/admin/home">主页</a>
+                </li>
+                <li>
+                    <a>友情链接管理</a>
+                </li>
+                <li>
+                    <strong>友情链接列表</strong>
+                </li>
+            </ol>
+        </div>
+        <div class="col-lg-2">
 
+        </div>
     </div>
-</div>
     <div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-content">
-                    <div class="row">
-                        <form class="form-inline">
-                            <div class="col-sm-2">
-                                <div class="input-group">
-                                    <input type="text" id="keyword" placeholder="请输入名称" class="input-sm form-control">
-                                    <span class="input-group-btn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <form class="form-inline">
+                                <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input type="text" id="keyword" placeholder="请输入名称"
+                                               class="input-sm form-control">
+                                        <span class="input-group-btn">
 		                                        		<button id="search" type="button"
                                                                 class="btn btn-sm btn-primary">搜索</button>
                                             </span>
+                                    </div>
                                 </div>
+                                <button id="add" type="button" class="btn btn-sm btn-danger">添加友链</button>
+                            </form>
+                        </div>
+
+                        <!-- 表格数据 -->
+                        <div id="dataList"></div>
+
+                        <div>
+                            <div style="float: left" class="pagination">共
+                                <span id="total-num"></span>
+                                条记录
+                                <span id="current-page"></span>
+                                /
+                                <span id="total-page"></span>
                             </div>
-                            <button id="add" type="button" class="btn btn-sm btn-danger">添加友链</button>
-                        </form>
-                    </div>
 
-                    <!-- 表格数据 -->
-                    <div id="dataList"></div>
+                            <div id="pagination" class="pagination" style="float: right">
 
-                    <div>
-                        <div style="float: left" class="pagination">共
-                            <span id="total-num"></span>
-                            条记录
-                            <span id="current-page"></span>
-                            /
-                            <span id="total-page"></span>
-                        </div>
-
-                        <div id="pagination" class="pagination" style="float: right">
+                            </div>
 
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
-
-
-</div>
 </div>
 <!-- 新增页面 -->
 <div class="modal inmodal" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -85,27 +87,10 @@
     </div>
 </div>
 
-
-<!-- Mainly scripts -->
-<script src="/js/jquery.min.js"></script>
-<script src="/admin/js/bootstrap.min.js"></script>
-<script src="/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="/admin/js/hplus.js"></script>
-
-<script src="/admin/js/validation.js"></script>
-<script src="/js/jqPaginator.min.js"></script>
-<script type="text/javascript" src="/admin/js/flavr/flavr/js/flavr.min.js"></script>
-<script type="text/javascript" src="/admin/js/flavr/base.js"></script>
-<script src="/admin/js/cropper.min.js"></script>
-<script src="/admin/js/upload-image.js"></script>
-
+<!-- 逻辑脚本 -->
 <script src="/admin/js/flink/flink.js"></script>
 <script src="/admin/js/flink/edit_flink.js"></script>
 <script src="/admin/js/flink/add_flink.js"></script>
-
-<script src="/admin/js/userinfo.js"></script>
-
 
 </body>
 

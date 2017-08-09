@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 <head th:replace="~{admin/partial/head :: head}"></head>
+
 <body>
 <div id="wrapper" class="gray-bg dashbard-1">
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -34,7 +35,7 @@
                                         <input type="text" id="keyword" placeholder="请输入标签名称"
                                                class="input-sm form-control">
                                         <span class="input-group-btn">
-		                                        		<button id="tag-search" type="button"
+		                                        		<button id="search" type="button"
                                                                 class="btn btn-sm btn-primary">搜索</button>
 		                                        	</span>
                                     </div>
@@ -85,24 +86,8 @@
     </div>
 </div>
 
-<!-- Mainly scripts -->
-<script src="/js/jquery.min.js"></script>
-<script src="/admin/js/bootstrap.min.js"></script>
-<script src="/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="/admin/js/hplus.js"></script>
-<script src="/admin/js/validation.js"></script>
-
-<script src="/js/jqPaginator.min.js"></script>
-<script type="text/javascript" src="/admin/js/flavr/flavr/js/flavr.min.js"></script>
-<script type="text/javascript" src="/admin/js/flavr/base.js"></script>
-
+<!-- 逻辑脚本 -->
 <script src="/admin/js/tag/tag.js"></script>
-<script src="/admin/js/userinfo.js"></script>
-
-<script src="/admin/js/cropper.min.js"></script>
-<script src="/admin/js/upload-image.js"></script>
-
 </body>
 
 </html>

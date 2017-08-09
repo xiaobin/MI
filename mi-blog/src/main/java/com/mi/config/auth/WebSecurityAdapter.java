@@ -31,7 +31,7 @@ public class WebSecurityAdapter extends WebSecurityConfigurerAdapter {
             .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/admin/home").permitAll()
+                .defaultSuccessUrl("/admin/index").permitAll()
             .and()
                 .headers().frameOptions().disable()// x-frame-options deny
             .and()

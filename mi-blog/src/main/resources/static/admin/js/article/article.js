@@ -156,5 +156,5 @@ function loadArticleList(){
 
 // 编辑文章
 $("#dataList").on('click','.article-edit',function () {
-	window.open("/admin/article/editJump?id="+$(this).parent().data("id"));
+    window.location.href = "/admin/article/editJump?id="+$(this).parent().data("id");
 });
