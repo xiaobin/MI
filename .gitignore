@@ -2,14 +2,21 @@ logs
 # 项目资源
 .idea/
 *.iml
-test
 
-.project-resouce
+test
+target/
+
+
+
+
+
 # 目录结构太长隐藏
 # 暂时隐藏
-mi-admin
-mi-api
-mi-app
-
-mi-config
-
+#mi-admin
+#mi-api
+#mi-app
+#
+#mi-config
+#
+#mi-blog/target/
+#mi-common/target/
