@@ -1,6 +1,7 @@
 package com.mi.module.blog.mapper;
 
 import com.mi.data.vo.Pager;
+import com.mi.data.vo.TypeVo;
 import com.mi.module.blog.entity.Type;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -20,4 +21,6 @@ public interface TypeMapper extends BaseMapper<Type> {
     List<Type> load(@Param("pager") Pager pager, @Param("param") String param);
 
     int checkExist(Type type);
+
+    List<TypeVo> initTypeList();
 }

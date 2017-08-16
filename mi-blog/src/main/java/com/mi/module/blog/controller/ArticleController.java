@@ -1,6 +1,6 @@
 package com.mi.module.blog.controller;
 
-import com.mi.data.vo.ArticleCustom;
+import com.mi.data.vo.ArticleVo;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Article;
 import com.mi.module.blog.service.*;
@@ -45,7 +45,7 @@ public class ArticleController {
      */
     @RequestMapping("/load")
     public String loadArticle(Pager<Article> pager, Model model) {
-        List<ArticleCustom> articleList = iArticleService.selectArticleList(pager);
+        List<ArticleVo> articleList = iArticleService.selectArticleList(pager);
         model.addAttribute("articleList", articleList);
         return "blog/part/articleSummary";
     }
@@ -66,5 +66,50 @@ public class ArticleController {
         model.addAttribute("articleList", articleList);
         return "blog/part/search-info";
     }
+
+//    /**
+//     * 加载文章
+//     * 包括总标签数
+//     * 总文章数量
+//     * 分类及每个分类文章数量
+//     * 友链集合
+//     *
+//     * @return
+//     */
+//    @RequestMapping("/details/{articleId}")
+//    public String loadArticle(@PathVariable Integer articleId, Model model){
+//        ArticleVo articleCustom = articleService.getArticleCustomById(articleId);
+//        //新增判断，当文章不存在或文章不展示的情况下，会跳转到404页面
+//        if (articleCustom == null){
+//            return  "redirect:/404";
+//        }
+//
+//        //当前文章的所有信息
+//        List<Partner> partnerList = partnerService.findAll();
+//        List<CategoryCustom> categoryList = categoryService.initCategoryList();
+//        //上一篇
+//        Article lastArticle = articleService.getLastArticle(articleId);
+//        //下一篇
+//        Article nextArticle = articleService.getNextArticle(articleId);
+//        //增加浏览量
+//        articleService.addArticleCount(articleId);
+//        //获取文章总数量
+//        int articleCount = articleService.getArticleCount();
+//        //标签总数量
+//        int tagCount = tagService.getTagCount();
+//
+//        UserInfo userInfo = userService.getUserInfo();
+//        model.addAttribute("lastArticle",lastArticle);
+//        model.addAttribute("nextArticle",nextArticle);
+//        model.addAttribute("article",articleCustom);
+//        model.addAttribute("categoryCount",categoryList.size());
+//        model.addAttribute("articleCount",articleCount);
+//        model.addAttribute("tagCount",tagCount);
+//        model.addAttribute("categoryList",categoryList);
+//        model.addAttribute("partnerList",partnerList);
+//        model.addAttribute("userInfo",userInfo);
+//        return "blog/article";
+//    }
+
 
 }

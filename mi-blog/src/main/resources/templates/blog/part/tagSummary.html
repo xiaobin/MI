@@ -6,17 +6,14 @@
         <h1 class="title" th:text="'#'+${tagName}" ></h1>
     </div>
 
-
     <div th:each="article: ${articleList}">
         <div class="timeline-row">
             <span class="node"></span>
             <div class="content">
 
-
                 <h1 itemprop="name">
                     <a class="timeline-article-title" th:href="'/article/details/'+${article.id}" th:text="${article.title}"></a>
                 </h1>
-
 
                 <div class="article-meta">
 
@@ -26,7 +23,6 @@
                             <time datetime="2017-04-03" itemprop="datePublished" th:text="${#dates.format(article.createTime,'yyyy-MM-dd')}"></time>
                         </a>
                     </div>
-
                     <!--<div class="artitypegory" style="text-transform: none;">
                         <i class="fa fa-folder"></i>
                         <a class="artitypegory-link" th:hreftypegory/details/'+${article.categoryId}" th:text="${article.categoryName}" ></a>

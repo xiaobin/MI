@@ -1,6 +1,6 @@
 package com.mi.module.blog.service;
 
-import com.mi.data.vo.ArticleCustom;
+import com.mi.data.vo.ArticleVo;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Article;
 import com.baomidou.mybatisplus.service.IService;
@@ -40,7 +40,7 @@ public interface IArticleService extends IService<Article> {
      * @param pager
      * @return
      */
-    List<ArticleCustom> selectArticleList(Pager<Article> pager);
+    List<ArticleVo> selectArticleList(Pager<Article> pager);
 
     /**
      * 条件查询文章

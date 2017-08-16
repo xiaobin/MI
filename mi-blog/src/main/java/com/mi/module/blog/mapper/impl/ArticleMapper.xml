@@ -14,7 +14,7 @@
 		<result column="look_count" property="lookCount" />
 	</resultMap>
 
-	<resultMap id="article" type="com.mi.data.vo.ArticleCustom">
+	<resultMap id="article" type="com.mi.data.vo.ArticleVo">
 		<id column="article_id" property="articleId" />
 		<result column="title" property="title" />
 		<result column="content" property="content" />

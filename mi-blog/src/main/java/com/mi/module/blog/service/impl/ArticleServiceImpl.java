@@ -2,7 +2,7 @@ package com.mi.module.blog.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.mi.common.util.IDUntil;
-import com.mi.data.vo.ArticleCustom;
+import com.mi.data.vo.ArticleVo;
 import com.mi.data.vo.Pager;
 import com.mi.module.blog.entity.Article;
 import com.mi.module.blog.entity.ArticleTag;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -58,7 +57,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
     @Override
-    public List<ArticleCustom> selectArticleList(Pager<Article> pager) {
+    public List<ArticleVo> selectArticleList(Pager<Article> pager) {
         return articleMapper.selectArticleList(pager);
     }
 

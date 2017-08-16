@@ -23,8 +23,8 @@ public class WebSecurityAdapter extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-            .antMatchers("/blog/**","/tag/**","friend","/login/**").permitAll()
-            .antMatchers("/admin/**").authenticated()
+            .antMatchers("/blog/**","/tag/**","friend/**","/login/**").permitAll()
+            .antMatchers("/admin**","/admin/**").authenticated()
             .and()
                 .rememberMe()
                 .tokenValiditySeconds(3600)

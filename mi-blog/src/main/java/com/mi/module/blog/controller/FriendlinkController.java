@@ -31,22 +31,6 @@ public class FriendlinkController {
         return entity;
     }
 
-    /** insert **/
-    @RequestMapping(value = "insert")
-    public void insert(){
 
-    }
-
-    /** delete **/
-    @RequestMapping(value = "delete")
-    public void delete(){
-
-    }
-
-    /** update **/
-    @RequestMapping(value = "update")
-    public void update(){
-
-    }
 
 }

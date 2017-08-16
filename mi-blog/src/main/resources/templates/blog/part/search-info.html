@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 <body>
     <section class="ins-section">
-        <header class="ins-section-header">文章</header>
+        <header class="ins-section-header">搜索文章</header>
         <div class="ins-selectable ins-search-item" th:each="article : ${articleList}" th:data-url="'/article/details/'+${article.articleId}">
             <header>
                 <i class="fa fa-file"></i>

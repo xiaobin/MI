@@ -2,6 +2,7 @@ package com.mi.module.blog.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.mi.data.vo.Pager;
+import com.mi.data.vo.TypeVo;
 import com.mi.module.blog.entity.Type;
 import com.mi.module.blog.mapper.TypeMapper;
 import com.mi.module.blog.service.ITypeService;
@@ -45,5 +46,10 @@ public class TypeServiceImpl extends ServiceImpl<TypeMapper, Type> implements IT
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<TypeVo> initTypeList() {
+        return typeMapper.initTypeList();
     }
 }

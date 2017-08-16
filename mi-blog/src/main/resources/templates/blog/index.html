@@ -10,7 +10,7 @@
     <header id="header" th:replace="blog/part/header :: header" />
 
     <div class="outer">
-
+        <!-- 左边部分-->
         <aside id="profile">
             <!--个人基础信息-->
             <div class="inner profile-inner" th:replace="blog/part/base-of-me :: base_of_me"></div>
@@ -22,7 +22,7 @@
             <div class="inner profile-inner" th:replace="blog/part/wechat-info :: wechat_info"></div>
         </aside>
 
-
+        <!-- 中间部分-->
         <section id="main">
             <div id="loader-wrapper">
                 <div id="loader"></div>
@@ -30,9 +30,11 @@
                 <div class="loader-section section-right"></div>
                 <div class="load_title">正在努力加载站点....<br><span>V1.0</span></div>
             </div>
-            <div id="main-article">
 
-            </div>
+
+            <div id="main-article"></div>
+
+
             <div style="margin-top: -29px;height:50px">
                 <div style="float: left;display: none" class="pagination">共
                     <span id="total-num"></span>
@@ -49,6 +51,7 @@
             </div>
         </section>
 
+        <!-- 右边部分-->
         <aside id="sidebar">
             <!--公告-->
             <div class="widget-wrap" th:replace="blog/part/announcement :: announcement"></div>
@@ -56,11 +59,21 @@
             <!--每日一言-->
             <div class="widget-wrap" th:replace="blog/part/aphorism :: aphorism"></div>
 
-            <!--&lt;!&ndash;文章分类&ndash;&gt;-->
-            <!--<div class="widget-wrap" th:replace="blog/part/classification :: classification"></div>-->
-            <!--&lt;!&ndash;文章归档&ndash;&gt;-->
+            <!--文章分类-->
+            <div class="widget-wrap" th:replace="blog/part/classification :: classification"></div>
+
+            <!--文章归档-->
             <!--<div class="widget-wrap" th:replace="blog/part/article-archive :: article-archive"></div>-->
-            <!--&lt;!&ndash; <div class="widget-wrap" th:replace="blog/part/label-info :: label-info"></div>&ndash;&gt;-->
+
+            <!-- 标签云 -->
+            <div class="widget-wrap" th:replace="blog/part/label-info :: label-info"></div>
+
+            <div id="links">
+
+                <a href="a?x=30&y=0&z=150">Tracked</a>
+                <a href="b?x=-200&y=23&z=-150">zlow</a>
+                <a href="c?x=60&y=-23&z=10">three</a>
+             </div>
 
             <div id="toTop" class="fa fa-angle-up"></div>
         </aside>
@@ -69,6 +82,7 @@
 
     <footer id="footer" th:replace="blog/part/footer :: footer"></footer>
 </div>
+
 <script src="/js/jquery.min.js"></script>
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script src="/js/index.js"></script>

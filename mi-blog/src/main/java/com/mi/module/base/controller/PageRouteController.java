@@ -2,6 +2,7 @@ package com.mi.module.base.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.mi.data.vo.Pager;
+import com.mi.data.vo.TypeVo;
 import com.mi.module.blog.entity.Friendlink;
 import com.mi.module.blog.entity.Tag;
 import com.mi.module.blog.entity.Type;
@@ -98,7 +99,7 @@ public class PageRouteController {
       /** 后台首页（文章） **/
     @RequestMapping("/admin/home")
     public String homePage(){
-        return "redirect:/admin/article/list";
+        return "redirect:/admin/index";
     }
     /** 后台首页内容 **/
     @RequestMapping("/admin/index")
@@ -126,19 +127,27 @@ public class PageRouteController {
     public String home(Model model){
         //后期参数定义 做成多博客系统
         UserInfo uInfo = iUserInfoService.selectByUserId("1");
+        model.addAttribute("userInfo",uInfo);
         //友情链接
         List<Friendlink> fLinkList = iFriendlinkService.selectAllList();
+        model.addAttribute("fLinkList",fLinkList);
+        //类别
+        List<TypeVo> typeList = iTypeService.initTypeList();
+        model.addAttribute("typeList",typeList);
+//        model.addAttribute("typeCount",typeList.size());
+
+
+
+
         //获取归档列表
         List<Map> archiveList = iArticleService.selectArticleArchiveList();
-
-        model.addAttribute("fLinkList",fLinkList);
         model.addAttribute("archiveList",archiveList);
 
-        model.addAttribute("typeCount",0);
+
         model.addAttribute("articleCount",1);
         model.addAttribute("tagCount",1);
 
-        model.addAttribute("userInfo",uInfo);
+
 
         return "blog/index";
     }
