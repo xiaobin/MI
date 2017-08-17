@@ -47,7 +47,7 @@ public class ArticleController {
     public String loadArticle(Pager<Article> pager, Model model) {
         List<ArticleVo> articleList = iArticleService.selectArticleList(pager);
         model.addAttribute("articleList", articleList);
-        return "blog/part/articleSummary";
+        return "blog/right/articleSummary";
     }
 
     /**

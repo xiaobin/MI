@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>标签云</title>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/rotator.js"></script>
+    <style type="text/css">
+        html {
+            overflow: hidden;
+        }
+
+        body {
+            background: #222;
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #x_axis {
+            border: 1px solid #555;
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            top: 50%;
+        }
+
+        #y_axis {
+            height: 100%;
+            width: 1px;
+            position: absolute;
+            left: 50%;
+        }
+
+        #y_axis_line {
+            border: 1px solid #555;
+            height: 100%;
+            width: 1px;
+            position: absolute;
+            left: 50%;
+            top: 0px;
+        }
+
+        #links a {
+            padding: 0px;
+            margin: 0px;
+            z-index: 100;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:hover {
+            text-decoration: none;
+            background: #ff8000;
+            color: #fff;
+        }
+
+        a:visited {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        a:visited:hover {
+            text-decoration: none;
+            background: #ff8000;
+            color: #fff;
+        }
+
+        #debug {
+            color: #aaa;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 3px solid #888;
+            padding: 5px;
+        }
+
+        #debug div {
+            padding: 3px;
+            border-bottom: 1px solid #555;
+            background-color: #444;
+            width: 200px;
+        }
+
+        #debug2 {
+            z-index: 1000;
+            color: #aaa;
+            position: absolute;
+            top: 180px;
+            right: 20px;
+            border: 3px solid #888;
+            padding: 5px;
+        }
+
+        #debug2 div {
+            padding: 3px;
+            border-bottom: 1px solid #555;
+            background-color: #444;
+            width: 200px;
+        }
+
+        #debug3 {
+            color: #aaa;
+            position: absolute;
+            top: 20px;
+            right: 250px;
+            border: 3px solid #888;
+            padding: 5px;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+<div id="debug">
+    <div id="camDist">0</div>
+    <div id="angle">0</div>
+    <div id="elm1d">0</div>
+    <div id="elm3d">0</div>
+    <div id="vangle">0</div>
+</div>
+
+
+<!--have to fake the y-axis grid line here-->
+<div id="y_axis_line"></div>
+<div id="x_axis">
+    <div id="y_axis">
+
+        <div id="links">
+
+
+            <a href="a?x=30&y=0&z=150">Tracked</a>
+            <a href="b?x=-200&y=23&z=-150">zlow</a>
+            <a href="c?x=60&y=-23&z=10">three</a>
+            <a href="d?x=-90&y=13&z=0">four</a>
+            <a href="e?x=120&y=-143&z=0">five</a>
+            <a href="http://www.kevo.com?x=-150&y=123&z=120">KEVO</a>
+            <a href="g?x=180&y=-23&z=0">seven</a>
+            <a href="h?x=210&y=23&z=0">eight</a>
+            <a href="b?x=200&y=13&z=-120">two</a>
+            <a href="d?x=100&y=63&z=0">four</a>
+            <a href="e?x=130&y=153&z=0">five</a>
+            <a href="f?x=-160&y=53&z=40">six</a>
+            <a href="g?x=10&y=-83&z=0">seven</a>
+            <a href="h?x=-220&y=-133&z=-40">eight</a>
+
+            <a href="e?x=130&y=353&z=230">far</a>
+            <a href="f?x=-160&y=53&z=430">out</a>
+            <a href="g?x=10&y=-83&z=230">asdfasd</a>
+            <a href="h?x=-220&y=-133&z=-420">ftw</a>
+
+
+            <a href="e?x=370&y=303&z=0">far</a>
+            <a href="f?x=-370&y=3&z=0">out</a>
+            <a href="g?x=70&y=-3&z=0">systems</a>
+            <a href="http://www.jquery.com?x=-270&y=-303&z=0">jquery</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

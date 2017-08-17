@@ -1,6 +1,7 @@
 body {
   width: 100%;
 }
+
 body:before,
 body:after {
   content: "";
@@ -693,7 +694,7 @@ code {
   line-height: 40px;
   text-align: center;
   margin: 20px auto 10px;
-  background: #29ac2c;
+  background: #169cd2;
   border-radius: 20px;
   -webkit-transition: 0.2s ease;
   -moz-transition: 0.2s ease;
@@ -710,13 +711,14 @@ code {
   line-height: 40px;
   text-align: center;
   margin: 20px auto 10px;
-  background: #29ac2c;
+  background: rgba(27, 39, 27, 0.65);
   border-radius: 20px;
   -webkit-transition: 0.2s ease;
   -moz-transition: 0.2s ease;
   -ms-transition: 0.2s ease;
   transition: 0.2s ease;
 }
+
 
 #profile .inner .base-info #follow:hover {
   background: #49c8fb;

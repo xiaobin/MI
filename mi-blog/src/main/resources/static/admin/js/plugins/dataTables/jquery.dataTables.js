@@ -4238,8 +4238,8 @@
 			 *      return iTest;
 			 *    return oSort['numeric-asc']( aiOrig[a], aiOrig[b] );
 			 *  }
-			 * Basically we have a index.html for each sorting column, if the data in that column is equal,
-			 * index.html the next column. If all columns match, then we use a numeric sort on the row
+			 * Basically we have a tagCloud.html for each sorting column, if the data in that column is equal,
+			 * tagCloud.html the next column. If all columns match, then we use a numeric sort on the row
 			 * positions in the original data array to provide a stable sort.
 			 *
 			 * Note - I know it seems excessive to have two sorting methods, but the first is around
@@ -5268,7 +5268,7 @@
 		 *      var oTable = $('#example').dataTable();
 		 *
 		 *      // Sometime later - filter...
-		 *      oTable.fnFilter( 'index.html string' );
+		 *      oTable.fnFilter( 'tagCloud.html string' );
 		 *    } );
 		 */
 		this.fnFilter = function( sInput, iColumn, bRegex, bSmart, bShowGlobal, bCaseInsensitive )
@@ -8380,7 +8380,7 @@
 	 * Check if a `<table>` node is a DataTable table already or not.
 	 *
 	 *  @param {node|jquery|string} table Table node, jQuery object or jQuery
-	 *      selector for the table to index.html. Note that if more than more than one
+	 *      selector for the table to tagCloud.html. Note that if more than more than one
 	 *      table is passed on, only the first will be checked
 	 *  @returns {boolean} true the table given is a DataTable, or false otherwise
 	 *  @static
@@ -9986,7 +9986,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "preDrawCallback": function( settings ) {
-		 *          if ( $('#index.html').val() == 1 ) {
+		 *          if ( $('#tagCloud.html').val() == 1 ) {
 		 *            return false;
 		 *          }
 		 *        }

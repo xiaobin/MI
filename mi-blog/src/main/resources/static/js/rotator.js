@@ -153,10 +153,10 @@ function run(){
         items.rotate();
         $("#angle").html("psi =" + parseInt(psi));
         $("#vangle").html("v angle =" + parseInt(vpsi));
-        $("#elm1d").html( elem[17].html + " dist =" + elem[17].dist);
+        $("#elm1d").html( elem[3].html + " dist =" + elem[3].dist);
         $("#elm3d").html( elem[3].html + " dist =" + elem[3].dist);
         $("#camDist").html("camera Distance =" + camDist);
-	setTimeout("run()", 16);
+	setTimeout("run()", 1);
 }
 
 $(document).ready(function(){

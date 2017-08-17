@@ -111,7 +111,11 @@ public class PageRouteController {
 
 
     /******************** 博客主页 ********************/
-
+    /** 登录页面 **/
+    @RequestMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
 
 
     /** 初始化主页分页信息 **/
@@ -137,25 +141,22 @@ public class PageRouteController {
 //        model.addAttribute("typeCount",typeList.size());
 
 
-
-
         //获取归档列表
         List<Map> archiveList = iArticleService.selectArticleArchiveList();
         model.addAttribute("archiveList",archiveList);
 
-
         model.addAttribute("articleCount",1);
         model.addAttribute("tagCount",1);
 
-
-
         return "blog/index";
     }
-    /** 登录页面 **/
-    @RequestMapping("/login")
-    public String loginPage() {
-        return "login";
+
+    /** 标签云 **/
+    @RequestMapping("/tag/cloud")
+    public String tagCloud(){
+        return "blog/cloud/tagCloud";
     }
+
     /** thymeleaf 使用介绍 **/
     @RequestMapping("/thymeleaf")
     public String thymeleafPage(){
