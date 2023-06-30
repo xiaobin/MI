@@ -8,7 +8,7 @@
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>mi-eureka-consumer</name>
-	<description></description>
+	<description/>
 
 	<parent>
 		<groupId>mi</groupId>
@@ -51,7 +51,7 @@
 		<dependency>
 			<groupId>org.jolokia</groupId>
 			<artifactId>jolokia-core</artifactId>
-			<version>1.3.5</version>
+			<version>1.7.2</version>
 		</dependency>
 
 
