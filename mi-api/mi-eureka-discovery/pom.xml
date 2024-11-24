@@ -8,7 +8,7 @@
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>mi-eureka-consumer</name>
-	<description></description>
+	<description/>
 
 	<parent>
 		<groupId>mi</groupId>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>de.codecentric</groupId>
 			<artifactId>spring-boot-admin-starter-client</artifactId>
-			<version>1.5.0</version>
+			<version>1.5.7</version>
 		</dependency>
 
 		<!-- 包缺少问题 -->
